@@ -1,0 +1,133 @@
+body
+{
+	margin: 0px; 
+	padding: 0px;
+	font-family: Verdana, Helvetica, sans-serif;
+	font-size: 0.85em;
+}
+
+#banner
+{
+	background: black; 
+	padding: 10px 10px 0px 10px;
+	height: 25px;
+}
+
+table
+{
+	width: 100%;
+}
+
+.sf_admin_list table
+{
+	width: auto;
+}
+
+th, td
+{
+	vertical-align: top;
+}
+
+th
+{
+	text-align: left;
+}
+
+h1
+{
+	font-size: 180%;
+}
+
+input, textarea
+{
+	border: 1px solid silver;
+	-moz-border-radius: 5px;
+	-border-radius: 5px;
+}
+
+textarea
+{
+	width: 100%;
+}
+
+div#banner img#logo
+{
+	float: left;
+}
+
+div#banner div#search
+{
+	float: left;
+	margin-left: 10px;
+}
+
+div#search form
+{
+	display: inline;
+}
+
+div#search input
+{
+	border: 1px solid gray;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	margin-left: 5px;
+	font-size: 0.7em;
+}
+
+div#search img
+{
+	margin-top: 3px;
+	margin-left: 5px;
+	float: right;
+}
+
+div#menu
+{
+	margin-left: 440px;
+	padding: 2px 10px;
+	text-align: right;
+	background: #332533;
+	border: 1px solid #662266;
+	border-bottom: 0px; 
+}
+
+div#menu span.bg
+{
+	margin: 0px 10px;
+	color: gray; 
+	font-size: 0.9em; 
+	padding: 0px 10px;
+}
+
+div#menu span.bg a
+{
+	color: white;
+	font-weight: bold;
+	font-size: 0.9em;
+	text-decoration: none;
+	padding: 3px 7px;
+}
+
+div#menu span.bg a:hover
+{
+	background-color: #662266;
+}
+
+div#right-sidebar
+{
+	float: right;
+	background-color: #eee;
+	width: 250px;
+	font-size: 0.8em;
+}
+
+div#content
+{
+	background-color: white;
+}
+
+div#content.has-right-sidebar
+{
+	margin-right: 250px;
+}

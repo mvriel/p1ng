@@ -1,0 +1,36 @@
+P1ngIssueCustomFieldDefinition:
+  text:
+    name: Text
+    label: Please enter your text
+    field_type: string(255)
+    widget: input_text
+    validator: string
+  memo:
+    name: Memo
+    label: Please enter your text
+    field_type: string
+    widget: textarea
+    validator: string
+  number:
+    name: Number
+    label: Please enter your number
+    field_type: integer
+    widget: number
+    validator: number
+    
+P1ngIssueCustomField:
+  description:
+    p1ng_issue_custom_field_definition_id: 2
+    field_name: description
+    label: Description
+    
+P1ngCustomer:
+  naenius:
+    name: Naenius
+    code: NNS
+
+P1ngProject:
+  p1ng:
+    p1ng_customer_id: 1
+    name: p1ng
+    code: P1

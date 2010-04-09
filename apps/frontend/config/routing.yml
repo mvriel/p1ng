@@ -1,0 +1,42 @@
+p1ng_issue_custom_field:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                P1ngIssueCustomField
+    module:               field
+    prefix_path:          /field
+    column:               id
+    with_wildcard_routes: true
+
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/10-Routing
+
+# default rules
+homepage:
+  class: sfDoctrineRoute
+  url:   /
+  param: { module: issue, action: index }
+  options: { type: list, model: P1ngIssue }
+
+sf_guard_signin:
+  url:   /login
+  param: { module: sfGuardAuth, action: signin }
+
+sf_guard_signout:
+  url:   /logout
+  param: { module: sfGuardAuth, action: signout }
+
+sf_guard_password:
+  url:   /request_password
+  param: { module: sfGuardAuth, action: password }
+
+issue:
+  class: sfDoctrineRouteCollection
+  options: { model: P1ngIssue }
+
+log:
+  class: sfDoctrineRouteCollection
+  options: { model: P1ngIssueLog }
+
+project:
+  class: sfDoctrineRouteCollection
+  options: { model: P1ngProject }

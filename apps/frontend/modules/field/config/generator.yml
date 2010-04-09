@@ -1,0 +1,23 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           P1ngIssueCustomField
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          p1ng_issue_custom_field
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list: 
+        display: [=field_name, label, definition, related_to_model, deleted_at]
+      filter:
+        class: false
+      form: ~
+      edit:    ~
+      new:     ~

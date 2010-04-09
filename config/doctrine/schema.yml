@@ -1,0 +1,88 @@
+P1ngCustomer:
+  actAs:
+    Timestampable: ~
+    SoftDelete:    ~
+    Signable:      ~
+  columns:
+    code: { type: string(20), notnull: true, unique: true }
+    name: { type: string, notnull: true }
+
+P1ngProject:
+  actAs:
+    Timestampable: ~
+    SoftDelete:    ~
+    Signable:      ~
+  columns:
+    p1ng_customer_id: integer
+    code: { type: string(20), notnull: true, unique: true }
+    name: { type: string, notnull: true }
+  relations:
+    P1ngCustomer: { foreignAlias: projects }
+
+P1ngIssue:
+  actAs:  
+    Timestampable: ~
+    SoftDelete:    ~
+    Signable:      ~
+  columns:
+    p1ng_project_id: { type: integer, notnull: true }
+    subject: { type: string, notnull: true }
+  relations:
+    P1ngProject: { foreignAlias: issues }
+
+P1ngIssueLog:
+  actAs:
+    Timestampable: ~
+    SoftDelete:    ~
+    Signable:      ~
+  columns:
+    p1ng_issue_id: { type: integer, notnull: true }
+    text: clob
+  relations:
+    P1ngIssue: { foreignAlias: logs }
+
+P1ngIssueCustomRow:
+  columns:
+    p1ng_issue_id: { type: integer, primary: true }
+  relations:
+    P1ngIssue: { foreignAlias: custom, foreignType: one }
+
+P1ngIssueCustomField:
+  actAs:
+    Timestampable: ~
+    SoftDelete:    ~
+    Signable:      ~
+  columns:
+    p1ng_issue_custom_field_definition_id: integer
+    field_name: string(100)
+    label:      string
+    field_values:     string
+    default_value:    string
+    required:         boolean
+    related_to_model: string
+    related_to_field: string
+    field_options:    array
+    field_attributes: array
+  relations:
+    P1ngIssueCustomFieldDefinition: { foreignAlias: custom_field, alias: definition, foreignType: one }
+
+P1ngIssueCustomFieldDefinition:
+  actAs:
+    Timestampable: ~
+    SoftDelete:    ~
+  columns:
+    name:             string
+    label:            string
+    description:      clob
+    field_type:       string
+    widget:
+      type: enum
+      values: [ input_text, textarea, number, enum ]
+      default: input_text
+      notnull: true
+    validator:
+      type: enum
+      values: [ string ]
+      default: string
+    field_options: array
+    field_attributes: array
