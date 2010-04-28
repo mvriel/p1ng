@@ -1,3 +1,9 @@
+P1ngSettings:
+  initial_status:
+    namespace: issue_status
+    name:      initial
+    value:     1
+
 P1ngIssueCustomFieldDefinition:
   text:
     name: Text
@@ -17,13 +23,27 @@ P1ngIssueCustomFieldDefinition:
     field_type: integer
     widget: number
     validator: number
-    
+
+P1ngIssueStatus:
+  new:
+    name: New
+  accepted:
+    name: Accepted
+  in_progress:
+    name: In progress
+
+P1ngIssueStatusTransition:
+  new_accepted:
+    name:    Accept
+    from_id: 1
+    to_id:   2
+
 P1ngIssueCustomField:
   description:
     p1ng_issue_custom_field_definition_id: 2
     field_name: description
     label: Description
-    
+
 P1ngCustomer:
   naenius:
     name: Naenius

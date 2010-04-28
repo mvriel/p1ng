@@ -7,20 +7,26 @@
  * 
  * @property integer $p1ng_project_id
  * @property string $subject
+ * @property integer $p1ng_issue_status_id
  * @property P1ngProject $P1ngProject
+ * @property P1ngIssueStatus $P1ngIssueStatus
  * @property Doctrine_Collection $logs
  * @property P1ngIssueCustomRow $custom
  * 
- * @method integer             getP1ngProjectId()   Returns the current record's "p1ng_project_id" value
- * @method string              getSubject()         Returns the current record's "subject" value
- * @method P1ngProject         getP1ngProject()     Returns the current record's "P1ngProject" value
- * @method Doctrine_Collection getLogs()            Returns the current record's "logs" collection
- * @method P1ngIssueCustomRow  getCustom()          Returns the current record's "custom" value
- * @method P1ngIssue           setP1ngProjectId()   Sets the current record's "p1ng_project_id" value
- * @method P1ngIssue           setSubject()         Sets the current record's "subject" value
- * @method P1ngIssue           setP1ngProject()     Sets the current record's "P1ngProject" value
- * @method P1ngIssue           setLogs()            Sets the current record's "logs" collection
- * @method P1ngIssue           setCustom()          Sets the current record's "custom" value
+ * @method integer             getP1ngProjectId()        Returns the current record's "p1ng_project_id" value
+ * @method string              getSubject()              Returns the current record's "subject" value
+ * @method integer             getP1ngIssueStatusId()    Returns the current record's "p1ng_issue_status_id" value
+ * @method P1ngProject         getP1ngProject()          Returns the current record's "P1ngProject" value
+ * @method P1ngIssueStatus     getP1ngIssueStatus()      Returns the current record's "P1ngIssueStatus" value
+ * @method Doctrine_Collection getLogs()                 Returns the current record's "logs" collection
+ * @method P1ngIssueCustomRow  getCustom()               Returns the current record's "custom" value
+ * @method P1ngIssue           setP1ngProjectId()        Sets the current record's "p1ng_project_id" value
+ * @method P1ngIssue           setSubject()              Sets the current record's "subject" value
+ * @method P1ngIssue           setP1ngIssueStatusId()    Sets the current record's "p1ng_issue_status_id" value
+ * @method P1ngIssue           setP1ngProject()          Sets the current record's "P1ngProject" value
+ * @method P1ngIssue           setP1ngIssueStatus()      Sets the current record's "P1ngIssueStatus" value
+ * @method P1ngIssue           setLogs()                 Sets the current record's "logs" collection
+ * @method P1ngIssue           setCustom()               Sets the current record's "custom" value
  * 
  * @package    p1ng
  * @subpackage model
@@ -40,6 +46,10 @@ abstract class BaseP1ngIssue extends sfDoctrineRecord
              'type' => 'string',
              'notnull' => true,
              ));
+        $this->hasColumn('p1ng_issue_status_id', 'integer', null, array(
+             'type' => 'integer',
+             'notnull' => true,
+             ));
     }
 
     public function setUp()
@@ -47,6 +57,10 @@ abstract class BaseP1ngIssue extends sfDoctrineRecord
         parent::setUp();
         $this->hasOne('P1ngProject', array(
              'local' => 'p1ng_project_id',
+             'foreign' => 'id'));
+
+        $this->hasOne('P1ngIssueStatus', array(
+             'local' => 'p1ng_issue_status_id',
              'foreign' => 'id'));
 
         $this->hasMany('P1ngIssueLog as logs', array(

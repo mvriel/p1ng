@@ -5,7 +5,7 @@
     <tr>
       <th><?php echo $field->getLabel(); ?></th>
       <td><?php echo $p1ng_issue->getCustom()->get($field->getFieldName()); ?></td>
-    </tr>	
+    </tr>
 	<?php endforeach;?>
   </tbody>
 </table>
@@ -26,7 +26,12 @@
 <a href="<?php echo url_for('issue/index') ?>">Return to list</a>
 <table>
 <tr><th>Issue number</th><td><?php echo $p1ng_issue; ?></td></tr>
+<tr><th>Status</th><td><?php echo $p1ng_issue->getP1ngIssueStatus(); ?></td></tr>
 <tr><th>Reported at</th><td><?php echo format_date($p1ng_issue->getCreatedAt()); ?></td></tr>
 <tr><th>Last modified</th><td><?php echo format_date($p1ng_issue->getUpdatedAt()); ?></td></tr>
 </table>
+
+<?php foreach($p1ng_issue->getP1ngIssueStatus()->getFrom() as $transition): ?>
+<a href="<?php echo url_for('@transition?id='.$p1ng_issue->getId().'&transition_id='.$transition->getId());?>"><?php echo $transition->getName(); ?></a>
+<?php endforeach; ?>
 <?php end_slot();?>

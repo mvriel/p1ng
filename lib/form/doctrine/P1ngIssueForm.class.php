@@ -19,5 +19,14 @@ class P1ngIssueForm extends BaseP1ngIssueForm
 
   	$this->embedRelation('custom');
   }
-  
+
+  protected function doBind(array $values)
+  {
+    if ($this->isNew())
+    {
+      $values['p1ng_issue_status_id'] = sfConfig::get('p1ng_issue_status_initial', 1);
+    }
+    parent::doBind($values);
+  }
+
 }

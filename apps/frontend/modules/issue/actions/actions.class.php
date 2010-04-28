@@ -18,10 +18,18 @@ class issueActions extends sfActions
   public function executeShow(sfWebRequest $request)
   {
     $this->p1ng_issue = $this->getRoute()->getObject();
-    $this->log_form = new P1ngIssueLogForm(); 
-    $this->log_form->setDefault('p1ng_issue_id', $this->p1ng_issue->getId()); 
+    $this->log_form = new P1ngIssueLogForm();
+    $this->log_form->setDefault('p1ng_issue_id', $this->p1ng_issue->getId());
     $this->log_form->getWidget('p1ng_issue_id')->setHidden(true);
-    $this->log_form->getWidget('p1ng_issue_id')->setAttribute('style', 'display: none'); 
+    $this->log_form->getWidget('p1ng_issue_id')->setAttribute('style', 'display: none');
+  }
+
+  public function executeTransition(sfWebRequest $request)
+  {
+    $this->p1ng_issue = $this->getRoute()->getObject();
+    $transition = Doctrine::getTable('P1ngIssueStatusTransition')->find($request->getParameter('transition_id'));
+    $this->p1ng_issue->setStatus();
+    $this->redirect('issue/show?id='.$this->p1ng_issue->getId());
   }
 
   public function executeNew(sfWebRequest $request)

@@ -1,3 +1,13 @@
+P1ngSettings:
+  actAs:
+    Timestampable: ~
+    SoftDelete:    ~
+    Signable:      ~
+  columns:
+    namespace:     { type: string, notnull: true }
+    name:          { type: string, notnull: true }
+    value:         { type: string }
+
 P1ngCustomer:
   actAs:
     Timestampable: ~
@@ -19,16 +29,37 @@ P1ngProject:
   relations:
     P1ngCustomer: { foreignAlias: projects }
 
+P1ngIssueStatus:
+  actAs:
+    Timestampable: ~
+    SoftDelete:    ~
+  columns:
+    name:          { type: string, notnull: true }
+
+P1ngIssueStatusTransition:
+  actAs:
+    Timestampable: ~
+    SoftDelete:    ~
+  columns:
+    name:          { type: string, notnull: true }
+    from_id:       { type: integer, notnull: true }
+    to_id:         { type: integer, notnull: true }
+  relations:
+    From: { class: P1ngIssueStatus, foreignAlias: from, local: from_id }
+    To: { class: P1ngIssueStatus, foreignAlias: to, local: to_id }
+
 P1ngIssue:
-  actAs:  
+  actAs:
     Timestampable: ~
     SoftDelete:    ~
     Signable:      ~
   columns:
-    p1ng_project_id: { type: integer, notnull: true }
-    subject: { type: string, notnull: true }
+    p1ng_project_id:      { type: integer, notnull: true }
+    subject:              { type: string, notnull: true }
+    p1ng_issue_status_id: {type: integer, notnull: true}
   relations:
-    P1ngProject: { foreignAlias: issues }
+    P1ngProject:     { foreignAlias: issues }
+    P1ngIssueStatus: { foreignAlias: issues }
 
 P1ngIssueLog:
   actAs:

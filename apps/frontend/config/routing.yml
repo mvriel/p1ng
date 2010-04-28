@@ -1,3 +1,9 @@
+homepage:
+  class: sfDoctrineRoute
+  url:   /
+  param: { module: issue, action: index }
+  options: { type: list, model: P1ngIssue }
+
 p1ng_issue_custom_field:
   class: sfDoctrineRouteCollection
   options:
@@ -6,16 +12,6 @@ p1ng_issue_custom_field:
     prefix_path:          /field
     column:               id
     with_wildcard_routes: true
-
-# You can find more information about this file on the symfony website:
-# http://www.symfony-project.org/reference/1_4/en/10-Routing
-
-# default rules
-homepage:
-  class: sfDoctrineRoute
-  url:   /
-  param: { module: issue, action: index }
-  options: { type: list, model: P1ngIssue }
 
 sf_guard_signin:
   url:   /login
@@ -28,6 +24,12 @@ sf_guard_signout:
 sf_guard_password:
   url:   /request_password
   param: { module: sfGuardAuth, action: password }
+
+transition:
+  url:   /issue/:id/transition/:transition_id
+  class: sfDoctrineRoute
+  options: { model: P1ngIssue, type: object }
+  param: { module: issue, action: transition }
 
 issue:
   class: sfDoctrineRouteCollection
