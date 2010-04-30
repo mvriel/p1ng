@@ -1,133 +1,360 @@
-body
+body, html
 {
-	margin: 0px; 
-	padding: 0px;
-	font-family: Verdana, Helvetica, sans-serif;
-	font-size: 0.85em;
-}
-
-#banner
-{
-	background: black; 
-	padding: 10px 10px 0px 10px;
-	height: 25px;
+  background:         white url('../images/background.png') top left repeat-x;
+  width:              100%;
+  font-family:        Verdana;
+  font-size:          0.9em;
 }
 
 table
 {
-	width: 100%;
+  width: 100%;
 }
 
-.sf_admin_list table
+p
 {
-	width: auto;
+  margin: 0px;
+  padding: 0px;
+}
+
+a
+{
+  color:              #800080;
+  text-decoration:    none;
 }
 
 th, td
 {
-	vertical-align: top;
+  text-align:         left;
+  vertical-align:     top;
 }
 
-th
+#rss-feed-icon
 {
-	text-align: left;
+  float:              left;
+  display:            block;
 }
 
-h1
+.showabout
 {
-	font-size: 180%;
+  cursor:             help;
 }
 
-input, textarea
+#page
 {
-	border: 1px solid silver;
-	-moz-border-radius: 5px;
-	-border-radius: 5px;
+  background:         white;
+  width:              922px;
+  margin:             20px auto;
+  border:             1px solid #e3dddd;
 }
 
-textarea
+#top
 {
-	width: 100%;
+  background:         black url('../images/banner-right.png') top right no-repeat;
+  height:             30px;
 }
 
-div#banner img#logo
+#top .left
 {
-	float: left;
+  position:           relative;
 }
 
-div#banner div#search
+#top .small-logo
 {
-	float: left;
-	margin-left: 10px;
+  position:           relative;
+  top:                -4px;
 }
 
-div#search form
+#top #search
 {
-	display: inline;
+  float:              right;
+  padding-right:      5px;
+  margin-top:         -30px;
 }
 
-div#search input
+#top #search input
 {
-	border: 1px solid gray;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
-	margin-left: 5px;
-	font-size: 0.7em;
+  font-size:          10px;
 }
 
-div#search img
+#top #search input.text
 {
-	margin-top: 3px;
-	margin-left: 5px;
-	float: right;
+  background-color:   #361f32;
+  border:             1px solid gray;
+  -moz-border-radius: 5px;
+  color:              white;
+  margin:             5px;
+  margin-right:       0px;
+  padding:            3px;
+  padding-right:      28px;
 }
 
-div#menu
+#top #search_button
 {
-	margin-left: 440px;
-	padding: 2px 10px;
-	text-align: right;
-	background: #332533;
-	border: 1px solid #662266;
-	border-bottom: 0px; 
+  float:              right;
+  position:           relative;
+  top:                9px;
+  left:               -25px;
 }
 
-div#menu span.bg
+#menu
 {
-	margin: 0px 10px;
-	color: gray; 
-	font-size: 0.9em; 
-	padding: 0px 10px;
+  height:             30px;
+  line-height:        30px;
 }
 
-div#menu span.bg a
+#menu a.menuitem
 {
-	color: white;
-	font-weight: bold;
-	font-size: 0.9em;
-	text-decoration: none;
-	padding: 3px 7px;
+  display:            block;
+  padding:            0px 15px;
+  border-right:       1px solid silver;
+  float:              left;
+  text-decoration:    none;
+  color:              black;
+  font-size:          95%;
 }
 
-div#menu span.bg a:hover
+#banner
 {
-	background-color: #662266;
+  height:             80px;
+  background:         black url('../images/logo.png') center center no-repeat;
+  -moz-border-radius-bottomleft: 10px;
+  -moz-border-radius-bottomright: 10px;
 }
 
-div#right-sidebar
+#content
 {
-	float: right;
-	background-color: #eee;
-	width: 250px;
-	font-size: 0.8em;
+  background:         #fef3fe;
+  border:             1px solid silver;
+  -moz-border-radius: 10px;
+  padding:            10px;
+  margin:             10px;
+  margin-left:        200px;
 }
 
-div#content
+#content h1
 {
-	background-color: white;
+  font-size:          1.5em;
+  font-weight:        bold;
+  margin-top:         0px;
+  margin-bottom:      5px;
+  font-family:        Arial, sans-serif;
+  padding-bottom:     5px;
+  padding-left:       30px;
+  border-bottom:      1px solid gray;
 }
 
-div#content.has-right-sidebar
+#content table.post-meta h1
 {
-	margin-right: 250px;
+  margin:             0px;
+  padding:            0px;
+  border-bottom:      none;
+}
+
+#sidebar
+{
+  float:              left;
+  width:              180px;
+  margin:             10px;
+}
+
+#sidebar .section
+{
+  border:             1px solid silver;
+  -moz-border-radius: 10px;
+  padding:            10px;
+  margin-bottom:      10px;
+  font-size:          0.8em;
+}
+
+#sidebar .section h1
+{
+  font-size:          1.2em;
+  font-variant:       small-caps;
+  margin:             0px;
+  border-bottom:      1px solid #4d4d4d;
+  margin-bottom:      5px;
+  padding-left:       20px;
+  padding-bottom:     4px;
+  color:              #4d4d4d;
+}
+
+#sidebar .section a
+{
+  width:              150px;
+  word-wrap:          break-word;
+}
+
+#sidebar .section ul
+{
+  margin:             0px;
+  margin-left:        8px;
+  padding:            0px;
+}
+
+#sidebar .section li
+{
+  margin-bottom:      3px;
+}
+
+a.inline
+{
+  text-decoration:    none;
+  border-bottom:      1px dashed #800080;
+  color:              #800080;
+}
+
+img.inline-image
+{
+  float:              left;
+  margin-right:       6px;
+}
+
+#footer
+{
+  clear:              both;
+  color:              #777777;
+  font-size:          0.8em;
+  text-align:         right;
+  padding:            3px;
+}
+
+#footer a
+{
+  color:              #999999;
+}
+
+#footer a:HOVER
+{
+  color:              black;
+  text-decoration:    underline;
+}
+
+div.tweet
+{
+  font-size:          1.0em;
+  border-bottom:      1px solid silver;
+  padding-bottom:     3px;
+  margin-bottom:      3px;
+}
+
+h1.tweet
+{
+  background:         transparent url('../images/icons/twitter.png') center left no-repeat;
+}
+
+div.tweet-first
+{
+  font-style:         italic;
+}
+
+div.tweet-last
+{
+  border:             none;
+  margin:             0px;
+  padding:            0px;
+}
+
+h1.archive
+{
+  background:         transparent url('../images/icons/chat.png') center left no-repeat;
+}
+
+.post-meta h1
+{
+  font-size:          1.5em;
+  font-weight:        bold;
+  margin-top:         0px;
+  margin-bottom:      5px;
+  font-family:        Arial, sans-serif;
+  padding-bottom:     5px;
+  padding-left:       30px;
+  border-bottom:      1px solid gray;
+}
+
+.post-meta h1 a
+{
+  text-decoration:    none;
+}
+
+#comment-temps h2
+{
+  font-size:          1.3em;
+  font-family:        Arial, sans-serif;
+  padding-bottom:     5px;
+  padding-left:       30px;
+  border-bottom:      1px solid gray;
+  margin-top:         30px;
+  background:         transparent url('../images/icons/chat24x24.png') center left no-repeat;
+}
+
+.post-date
+{
+  background:         black;
+  -moz-border-radius: 5px;
+  color:              white;
+  text-align:         center;
+  border-collapse:    collapse;
+}
+
+.post-date .month
+{
+  -moz-border-radius: 5px 0px;
+  background:         #800080;
+  padding:            3px 6px;
+}
+
+.post-date .day
+{
+  font-weight:        bold;
+  padding:            3px 7px;
+  text-align:         right;
+}
+
+table.post-properties
+{
+  width:              100%;
+  font-size:          0.8em;
+}
+
+table.post-meta
+{
+  padding-bottom:     5px;
+  border-bottom:      1px dashed silver;
+  width:              100%;
+}
+
+table.post-meta td.date
+{
+  vertical-align:     middle;
+  width:              80px;
+}
+
+form small
+{
+  font-weight:        normal;
+  color:              gray;
+}
+
+div.markItUp
+{
+  width: 550px;
+}
+
+textarea.markItUpEditor
+{
+  width: 480px;
+}
+
+a.button
+{
+  height: 20px;
+  line-height: 20px;
+  border: 1px solid silver;
+  background: #eeeeee url('../images/button_gradient.gif') repeat-x top left;
+  color: black;
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+  text-align: center;
 }

@@ -11,6 +11,12 @@ P1ngIssueCustomFieldDefinition:
     field_type: string(255)
     widget: input_text
     validator: string
+  markdown:
+    name: Markdown text
+    label: Please enter your text
+    field_type: string
+    widget: markdown
+    validator: string
   memo:
     name: Memo
     label: Please enter your text
@@ -31,12 +37,25 @@ P1ngIssueStatus:
     name: Accepted
   in_progress:
     name: In progress
+  reopened:
+    name: Reopened
+  resolved:
+    name: Resolved
+  closed:
+    name: Closed
+
+P1ngWorkflow:
+  default:
+    name:                 default
+    p1ng_project_id:      1
+    p1ng_issue_status_id: 1
 
 P1ngIssueStatusTransition:
   new_accepted:
-    name:    Accept
-    from_id: 1
-    to_id:   2
+    name:             Accept
+    p1ng_workflow_id: 1
+    from_id:          1
+    to_id:            2
 
 P1ngIssueCustomField:
   description:

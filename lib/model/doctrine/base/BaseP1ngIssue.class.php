@@ -42,9 +42,10 @@ abstract class BaseP1ngIssue extends sfDoctrineRecord
              'type' => 'integer',
              'notnull' => true,
              ));
-        $this->hasColumn('subject', 'string', null, array(
+        $this->hasColumn('subject', 'string', 255, array(
              'type' => 'string',
              'notnull' => true,
+             'length' => '255',
              ));
         $this->hasColumn('p1ng_issue_status_id', 'integer', null, array(
              'type' => 'integer',

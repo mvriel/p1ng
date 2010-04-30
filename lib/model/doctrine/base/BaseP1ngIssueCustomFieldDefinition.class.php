@@ -64,6 +64,7 @@ abstract class BaseP1ngIssueCustomFieldDefinition extends sfDoctrineRecord
               1 => 'textarea',
               2 => 'number',
               3 => 'enum',
+              4 => 'markdown',
              ),
              'default' => 'input_text',
              'notnull' => true,

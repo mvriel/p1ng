@@ -1,0 +1,31 @@
+About
+=====
+p1ng is an issue tracker featuring many of the things that you are used to.
+The goal of this tracker is to provide an open source, attractive, light-weight but enterprise issue tracker.
+
+Features
+========
+- Workflow support
+- Custom fields
+- Custom statusses
+- Search based on Lucene
+- and more which I will write down soon(ish)!
+
+Installation
+============
+1. Extract / copy the source code to a path outside of your public webroot
+2. Add a virtual host configuration on your server which uses the /web directory as public root
+   and makes an alias to redirect all non-existant traffic to the index.php file.
+3. Setup database
+4. In the folder /lib/vendor/symfony checkout symfony 1.4 (http://svn.symfony-project.org/branches/1.4/)
+5. In the folder /lib/vendor/Zend checkout Zend Framework 1.10.4 (http://framework.zend.com/svn/framework/standard/tags/release-1.10.4/library/Zend/)
+6. Configure config/databases.yml to point to your database and database user
+7. Prepare the project by running the following commands from the project root (this folder)
+  1. php symfony project:permissions
+  2. php symfony cc
+8. Populate the database by running the following commands from the project root (this folder):
+  1. php symfony doctrine:build-sql
+  2. php symfony doctrine:insert-sql
+  3. php symfony doctrine:migrate
+  3. php symfony doctrine:data-load
+

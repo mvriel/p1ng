@@ -17,7 +17,7 @@ abstract class BaseP1ngIssueForm extends BaseFormDoctrine
     $this->setWidgets(array(
       'id'                   => new sfWidgetFormInputHidden(),
       'p1ng_project_id'      => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('P1ngProject'), 'add_empty' => false)),
-      'subject'              => new sfWidgetFormTextarea(),
+      'subject'              => new sfWidgetFormInputText(),
       'p1ng_issue_status_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('P1ngIssueStatus'), 'add_empty' => false)),
       'created_at'           => new sfWidgetFormDateTime(),
       'updated_at'           => new sfWidgetFormDateTime(),
@@ -29,7 +29,7 @@ abstract class BaseP1ngIssueForm extends BaseFormDoctrine
     $this->setValidators(array(
       'id'                   => new sfValidatorDoctrineChoice(array('model' => $this->getModelName(), 'column' => 'id', 'required' => false)),
       'p1ng_project_id'      => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('P1ngProject'))),
-      'subject'              => new sfValidatorString(),
+      'subject'              => new sfValidatorString(array('max_length' => 255)),
       'p1ng_issue_status_id' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('P1ngIssueStatus'))),
       'created_at'           => new sfValidatorDateTime(),
       'updated_at'           => new sfValidatorDateTime(),

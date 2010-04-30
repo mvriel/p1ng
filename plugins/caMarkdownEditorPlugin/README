@@ -1,0 +1,64 @@
+# caMarkdownEditorPlugin v 0.9.9
+
+## Screenshots
+
+
+  ![caMarkdownEditorPlugin screenshots](http://lukasz.sarzynski.biz/grafika/caMarkdownEditorPlugin/screenshots.jpg)
+
+
+## Instaltion
+
+**1. Download plugin**
+
+
+**2. Add options to  file app.yml:**
+
+    [yml]
+    all:
+      caMarkdownEditorPlugin:
+        stylesheets:  ['/caMarkdownEditorPlugin/css/markItUpEditor/editor.css', '/caMarkdownEditorPlugin/css/markItUpEditor/markdown.css']
+        javascripts:  ['/caMarkdownEditorPlugin/js/markItUpEditor/jquery.markitup.pack.js', '/caMarkdownEditorPlugin/js/markItUpEditor/markdown.js']
+
+
+**3. add widget to your's Form:**
+
+    [php]
+    $this->setWidgets(array(
+       'markdown_editor' => new caWidgetFormMarkdownEditorBasedOnMarkItUp(array())
+    ));
+
+**4. In action with previous Form load helper:**
+
+    [php]
+     <?php use_helper('caMarkdownEditor'); ?>
+
+**5a. Download and install JQuery:**
+
+Put jquery.js to /web/js
+
+Add to view.yml
+
+    [yml]
+    default:
+      http_metas:
+        content-type: text/html
+      javascripts:    [ jquery.js]
+      has_layout:     on
+      layout:         layout
+
+**5b. Or download plugins with JQuery**
+
+**5. clear cache**
+
+    $ symfony cc
+
+**6. Publish assets**
+
+    $ symfony plugin:publish-assets
+
+----
+
+
+This plugin was written in the company [codearts PL](http://codearts.pl/)
+
+ ![codearts logo](http://repository.codearts.pl/logotyp/logo.png)

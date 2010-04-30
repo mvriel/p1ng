@@ -9,17 +9,20 @@
  * @property string $code
  * @property string $name
  * @property P1ngCustomer $P1ngCustomer
+ * @property Doctrine_Collection $P1ngWorkflow
  * @property Doctrine_Collection $issues
  * 
  * @method integer             getP1ngCustomerId()   Returns the current record's "p1ng_customer_id" value
  * @method string              getCode()             Returns the current record's "code" value
  * @method string              getName()             Returns the current record's "name" value
  * @method P1ngCustomer        getP1ngCustomer()     Returns the current record's "P1ngCustomer" value
+ * @method Doctrine_Collection getP1ngWorkflow()     Returns the current record's "P1ngWorkflow" collection
  * @method Doctrine_Collection getIssues()           Returns the current record's "issues" collection
  * @method P1ngProject         setP1ngCustomerId()   Sets the current record's "p1ng_customer_id" value
  * @method P1ngProject         setCode()             Sets the current record's "code" value
  * @method P1ngProject         setName()             Sets the current record's "name" value
  * @method P1ngProject         setP1ngCustomer()     Sets the current record's "P1ngCustomer" value
+ * @method P1ngProject         setP1ngWorkflow()     Sets the current record's "P1ngWorkflow" collection
  * @method P1ngProject         setIssues()           Sets the current record's "issues" collection
  * 
  * @package    p1ng
@@ -53,6 +56,10 @@ abstract class BaseP1ngProject extends sfDoctrineRecord
         $this->hasOne('P1ngCustomer', array(
              'local' => 'p1ng_customer_id',
              'foreign' => 'id'));
+
+        $this->hasMany('P1ngWorkflow', array(
+             'local' => 'id',
+             'foreign' => 'p1ng_project_id'));
 
         $this->hasMany('P1ngIssue as issues', array(
              'local' => 'id',

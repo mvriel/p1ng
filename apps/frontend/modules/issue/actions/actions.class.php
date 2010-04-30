@@ -28,7 +28,11 @@ class issueActions extends sfActions
   {
     $this->p1ng_issue = $this->getRoute()->getObject();
     $transition = Doctrine::getTable('P1ngIssueStatusTransition')->find($request->getParameter('transition_id'));
-    $this->p1ng_issue->setStatus();
+    $this->forward404Unless($transition);
+
+    $this->p1ng_issue->setP1ngIssueStatusId($transition->getToId());
+    $this->p1ng_issue->save();
+
     $this->redirect('issue/show?id='.$this->p1ng_issue->getId());
   }
 
@@ -67,6 +71,14 @@ class issueActions extends sfActions
     $this->getRoute()->getObject()->delete();
 
     $this->redirect('issue/index');
+  }
+
+  public function executeSearch(sfWebRequest $request)
+  {
+    $this->forwardUnless($query = $request->getParameter('query'), 'issue', 'index');
+
+    $this->p1ng_issues = Doctrine_Core::getTable('P1ngIssue') ->getForLuceneQuery($query);
+    $this->setTemplate('index');
   }
 
   protected function processForm(sfWebRequest $request, sfForm $form)

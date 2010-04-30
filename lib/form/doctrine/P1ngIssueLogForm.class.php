@@ -12,10 +12,13 @@ class P1ngIssueLogForm extends BaseP1ngIssueLogForm
 {
   public function configure()
   {
-  	unset($this['created_at']);
-  	unset($this['created_by']);
+    unset($this['created_at']);
+    unset($this['created_by']);
     unset($this['updated_at']);
     unset($this['updated_by']);
     unset($this['deleted_at']);
+    $this->setWidget('text', new caWidgetFormMarkdownEditorBasedOnMarkItUp(array(), array(
+      'style' => 'height: 100px'
+    )));
   }
 }

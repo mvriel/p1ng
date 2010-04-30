@@ -2,4 +2,7 @@
 # http://www.symfony-project.org/reference/1_4/en/11-App
 
 # default values
-#all:
+all:
+  caMarkdownEditorPlugin:
+    stylesheets:  ['/caMarkdownEditorPlugin/css/markItUpEditor/editor.css', '/caMarkdownEditorPlugin/css/markItUpEditor/markdown.css']
+    javascripts:  ['/caMarkdownEditorPlugin/js/markItUpEditor/jquery.markitup.pack.js', '/caMarkdownEditorPlugin/js/markItUpEditor/markdown.js']

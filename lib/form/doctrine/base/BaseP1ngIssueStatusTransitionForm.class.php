@@ -15,23 +15,27 @@ abstract class BaseP1ngIssueStatusTransitionForm extends BaseFormDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'id'         => new sfWidgetFormInputHidden(),
-      'name'       => new sfWidgetFormTextarea(),
-      'from_id'    => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('From'), 'add_empty' => false)),
-      'to_id'      => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('To'), 'add_empty' => false)),
-      'created_at' => new sfWidgetFormDateTime(),
-      'updated_at' => new sfWidgetFormDateTime(),
-      'deleted_at' => new sfWidgetFormDateTime(),
+      'id'               => new sfWidgetFormInputHidden(),
+      'name'             => new sfWidgetFormTextarea(),
+      'p1ng_workflow_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('P1ngWorkflow'), 'add_empty' => false)),
+      'from_id'          => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('From'), 'add_empty' => false)),
+      'to_id'            => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('To'), 'add_empty' => false)),
+      'expression'       => new sfWidgetFormTextarea(),
+      'created_at'       => new sfWidgetFormDateTime(),
+      'updated_at'       => new sfWidgetFormDateTime(),
+      'deleted_at'       => new sfWidgetFormDateTime(),
     ));
 
     $this->setValidators(array(
-      'id'         => new sfValidatorDoctrineChoice(array('model' => $this->getModelName(), 'column' => 'id', 'required' => false)),
-      'name'       => new sfValidatorString(),
-      'from_id'    => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('From'))),
-      'to_id'      => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('To'))),
-      'created_at' => new sfValidatorDateTime(),
-      'updated_at' => new sfValidatorDateTime(),
-      'deleted_at' => new sfValidatorDateTime(array('required' => false)),
+      'id'               => new sfValidatorDoctrineChoice(array('model' => $this->getModelName(), 'column' => 'id', 'required' => false)),
+      'name'             => new sfValidatorString(),
+      'p1ng_workflow_id' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('P1ngWorkflow'))),
+      'from_id'          => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('From'))),
+      'to_id'            => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('To'))),
+      'expression'       => new sfValidatorString(array('required' => false)),
+      'created_at'       => new sfValidatorDateTime(),
+      'updated_at'       => new sfValidatorDateTime(),
+      'deleted_at'       => new sfValidatorDateTime(array('required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('p1ng_issue_status_transition[%s]');

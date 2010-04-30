@@ -34,8 +34,8 @@ all:
 
     # Enable the database manager
     use_database:           true
-    standard_helpers:       [Partial, Cache, Number, I18N, Date]
-    enabled_modules:        [default, sfGuardAuth]    
+    standard_helpers:       [Partial, Cache, Number, I18N, Date, caMarkdownEditor]
+    enabled_modules:        [default, sfGuardAuth, sfGuardUser, sfGuardGroup, sfGuardPermission]
 
     login_module:           sfGuardAuth
     login_action:           signin

@@ -1,0 +1,4 @@
+This project leans on both Zend Framework and Symfony.
+Thus in this folder you will have to add the following subfolders
+- symfony, containing a checkout of http://svn.symfony-project.org/branches/1.4/
+- Zend, containing a checkout of http://framework.zend.com/svn/framework/standard/tags/release-1.10.4/library/Zend/

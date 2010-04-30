@@ -1,6 +1,7 @@
 # Project files
 /cache/*
 /log/*
+/data/lucene/*
 /web/*_dev.php
 /web/uploads/*
 

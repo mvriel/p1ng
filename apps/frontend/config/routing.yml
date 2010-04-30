@@ -1,8 +1,10 @@
 homepage:
-  class: sfDoctrineRoute
   url:   /
-  param: { module: issue, action: index }
-  options: { type: list, model: P1ngIssue }
+  param: { module: default, action: home }
+
+admin:
+  url:   /admin
+  param: { module: default, action: admin }
 
 p1ng_issue_custom_field:
   class: sfDoctrineRouteCollection
@@ -13,17 +15,19 @@ p1ng_issue_custom_field:
     column:               id
     with_wildcard_routes: true
 
-sf_guard_signin:
-  url:   /login
-  param: { module: sfGuardAuth, action: signin }
+issue_search:
+  url:   /issue/search/*
+  param: { module: issue, action: search }
 
-sf_guard_signout:
-  url:   /logout
-  param: { module: sfGuardAuth, action: signout }
+workflow_graph:
+  url:   /workflow/:id/graph
+  class: sfDoctrineRoute
+  options: { model: P1ngWorkflow, type: object }
+  param: { module: workflow, action: graph }
 
-sf_guard_password:
-  url:   /request_password
-  param: { module: sfGuardAuth, action: password }
+workflow:
+  class: sfDoctrineRouteCollection
+  options: { model: P1ngWorkflow }
 
 transition:
   url:   /issue/:id/transition/:transition_id
