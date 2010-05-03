@@ -51,9 +51,8 @@ P1ngWorkflow:
 P1ngIssueStatusTransition:
   actAs:
     Timestampable: ~
-    SoftDelete:    ~
   columns:
-    name:             { type: string, notnull: true }
+    name:             { type: string(255), notnull: true }
     p1ng_workflow_id: { type: integer, notnull: true }
     from_id:          { type: integer, notnull: true }
     to_id:            { type: integer, notnull: true }

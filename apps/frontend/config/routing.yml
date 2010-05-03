@@ -30,6 +30,16 @@ workflow:
   options: { model: P1ngWorkflow }
 
 transition:
+  class: sfDoctrineRouteCollection
+  options: { model: P1ngIssueStatusTransition }
+
+transition_new:
+  url: /workflow/:p1ng_workflow_id/status/:from_id/transition/new
+  class: sfDoctrineRoute
+  options: { model: P1ngIssueStatusTransition, type: object }
+  param: { module: transition, action: new }
+
+transit:
   url:   /issue/:id/transition/:transition_id
   class: sfDoctrineRoute
   options: { model: P1ngIssue, type: object }

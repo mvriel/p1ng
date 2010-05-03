@@ -358,3 +358,23 @@ a.button
   display: block;
   text-align: center;
 }
+
+.error-box
+{
+  color: red;
+  font-size: 12px;
+  background: #FFFFCC url('../sf/sf_admin/images/error.png') no-repeat scroll 5px 50%;
+  border: 1px solid silver;
+  margin: 5px 10px;
+  padding: 5px 5px 5px 30px;
+}
+
+.notice-box
+{
+  color: green;
+  font-size: 12px;
+  background: #FFFFCC url('../sf/sf_admin/images/ok.png') no-repeat scroll 5px 50%;
+  border: 1px solid silver;
+  margin: 5px 10px;
+  padding: 5px 5px 5px 30px;
+}

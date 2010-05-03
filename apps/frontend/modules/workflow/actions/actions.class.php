@@ -86,11 +86,11 @@ class workflowActions extends sfActions
       $edges_passed[$transition->getId()] = true;
 
       $destination = $transition->getTo();
-
       $graph->addNode(
         $destination->getId(),
         array(
-  //        'URL'   => 'http://link1',
+          'URL'   => $this->getController()->genUrl('@transition_new?p1ng_workflow_id='.$workflow->getId().'&from_id='.$destination->getId()),
+          'target' => '_top',
           'label' => $destination->getName(),
           'shape' => 'box'
         )
@@ -101,6 +101,8 @@ class workflowActions extends sfActions
           $node->getId() => $destination->getId()
         ),
         array(
+          'URL'   => $this->getController()->genUrl('@transition_edit?id='.$transition->getId()),
+          'target' => '_top',
           'label' => $transition->getName(),
           'fontsize' => 2.0
         )
@@ -126,14 +128,15 @@ class workflowActions extends sfActions
     $graph->addNode(
       $start->getId(),
       array(
+        'URL'   => $this->getController()->genUrl('@transition_new?p1ng_workflow_id='.$p1ng_workflow->getId().'&from_id='.$start->getId()),
+        'target' => '_top',
         'label' => $start->getName(),
         'shape' => 'box'
-//        'URL'   => 'http://link1',
       )
     );
 
 //    var_export($start->getTo()->count());
-    $this->buildEdges($graph, $workflow, $start);
+    $this->buildEdges($graph, $p1ng_workflow, $start);
 
     $graph_svg = $graph->fetch();
 

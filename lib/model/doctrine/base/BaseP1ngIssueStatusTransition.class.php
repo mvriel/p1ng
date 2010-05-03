@@ -41,9 +41,10 @@ abstract class BaseP1ngIssueStatusTransition extends sfDoctrineRecord
     public function setTableDefinition()
     {
         $this->setTableName('p1ng_issue_status_transition');
-        $this->hasColumn('name', 'string', null, array(
+        $this->hasColumn('name', 'string', 255, array(
              'type' => 'string',
              'notnull' => true,
+             'length' => '255',
              ));
         $this->hasColumn('p1ng_workflow_id', 'integer', null, array(
              'type' => 'integer',
@@ -78,8 +79,6 @@ abstract class BaseP1ngIssueStatusTransition extends sfDoctrineRecord
              'foreign' => 'id'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();
-        $softdelete0 = new Doctrine_Template_SoftDelete();
         $this->actAs($timestampable0);
-        $this->actAs($softdelete0);
     }
 }

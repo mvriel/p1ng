@@ -38,6 +38,13 @@
   </div>
 
   <div id="content">
+    <?php if ($sf_user->hasFlash('error')): ?>
+    <div class="error-box"><?php echo $sf_user->getFlash('error'); ?></div>
+    <?php endif; ?>
+    <?php if ($sf_user->hasFlash('notice')): ?>
+    <div class="notice-box"><?php echo $sf_user->getFlash('error'); ?></div>
+    <?php endif; ?>
+
     <?php echo $sf_content ?>
   </div>
 

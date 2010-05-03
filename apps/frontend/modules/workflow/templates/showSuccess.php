@@ -1,6 +1,8 @@
-<embed src="<?php echo url_for('@workflow_graph?id='.$p1ng_workflow->getId()); ?>"
-  type="image/svg+xml"
-  pluginspage="http://www.adobe.com/svg/viewer/install/" />
+<div class="notice-box">Click on one of the statusses to add a transition, or click on a transition to edit or remove it.</div>
+<object data="<?php echo url_for('@workflow_graph?id='.$p1ng_workflow->getId()); ?>"
+  width="690"
+  height="900"
+  type="image/svg+xml" />
 
 <hr />
 
