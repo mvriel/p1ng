@@ -113,6 +113,13 @@ class workflowActions extends sfActions
 
   }
 
+  /**
+   * Generates the workflow graph for the given flow.
+   *
+   * @param sfWebRequest $request
+   *
+   * @return sfView::NONE
+   */
   public function executeGraph(sfWebRequest $request)
   {
     /** @var P1ngWorkflow $p1ng_workflow */
@@ -135,7 +142,6 @@ class workflowActions extends sfActions
       )
     );
 
-//    var_export($start->getTo()->count());
     $this->buildEdges($graph, $p1ng_workflow, $start);
 
     $graph_svg = $graph->fetch();
