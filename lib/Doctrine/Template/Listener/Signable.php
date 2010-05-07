@@ -20,8 +20,8 @@
  */
 
 /**
- * Listener for the Timestampable behavior which automatically sets the created
- * and updated columns when a record is inserted and updated.
+ * Listener for the Signable behavior which automatically sets the created by
+ * and updated by columns when a record is inserted and updated.
  *
  * @package     Doctrine
  * @subpackage  Template
@@ -29,12 +29,12 @@
  * @link        www.phpdoctrine.org
  * @since       1.0
  * @version     $Revision$
- * @author      Konsta Vesterinen <kvesteri@cc.hut.fi>
+ * @author      Mike van Riel <mike.vanriel@naenius.com>
  */
 class Doctrine_Template_Listener_Signable extends Doctrine_Record_Listener
 {
     /**
-     * Array of timestampable options
+     * Array of signable options
      *
      * @var string
      */
@@ -43,7 +43,7 @@ class Doctrine_Template_Listener_Signable extends Doctrine_Record_Listener
     /**
      * __construct
      *
-     * @param string $options 
+     * @param string $options
      * @return void
      */
     public function __construct(array $options)
@@ -52,7 +52,7 @@ class Doctrine_Template_Listener_Signable extends Doctrine_Record_Listener
     }
 
     /**
-     * Set the created and updated Timestampable columns when a record is inserted
+     * Set the created and updated Signable columns when a record is inserted
      *
      * @param Doctrine_Event $event
      * @return void
@@ -77,7 +77,7 @@ class Doctrine_Template_Listener_Signable extends Doctrine_Record_Listener
     }
 
     /**
-     * Set updated Timestampable column when a record is updated
+     * Set updated Signable column when a record is updated
      *
      * @param Doctrine_Event $evet
      * @return void
@@ -115,16 +115,16 @@ class Doctrine_Template_Listener_Signable extends Doctrine_Record_Listener
 
     /**
      * Returns the user id as known in the User object.
-     * 
+     *
      * The User object must declare this function, it is not a default symfony method.
-     * 
+     *
      * @return integer|null
      */
     public function getUserId()
     {
     	if (!sfContext::hasInstance()) return null;
-    	
+
     	return sfContext::getInstance()->getUser()->getId();
     }
-    
+
 }
