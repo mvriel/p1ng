@@ -16,23 +16,7 @@ class myUser extends sfGuardSecurityUser
 
   public function addCredentials()
   {
-//    $added = false;
-//    $rla = Doctrine::getTable('P1ngRowLevelAccess')->findByUserId($this->getId());
-//
-//    /** @var P1ngRowLevelAccess $item */
-//    foreach($rla as $item)
-//    {
-//      $added = true;
-//      $permission = Doctrine::getTable('sfGuardPermission')->find($item->getPermissionId());
-//      $name = $item->getNamespace().'.'.$item->getValue().'.'.$permission->getName();
-//      $this->credentials[] = $name;
-//    }
-//
-//    if ($added)
-//    {
-//      $this->storage->regenerate(false);
-//    }
-//
+
     $credentials = (is_array(func_get_arg(0))) ? func_get_arg(0) : func_get_args();
     parent::addCredentials($credentials);
   }
@@ -68,36 +52,11 @@ class myUser extends sfGuardSecurityUser
     return $result;
   }
 
-  public function getProject()
-  {
-    static $project = null;
-
-    if (!$project && $this->getProjectId())
-    {
-      $project = Doctrine::getTable('P1ngProject')->find($this->getProjectId());
-    }
-
-    return $project;
-  }
-
-  public function getProjectId()
-  {
-    return $this->getAttribute('project_id');
-  }
-
-  public function setProjectId($project_id)
-  {
-    // set the project id already as it is used with the hasCredential method
-    $this->setAttribute('project_id', $project_id);
-
-    // check if we are allowed to use this project
-    if (!$this->hasCredential('project.read'))
-    {
-      $this->setAttribute('project_id', null);
-      throw new Exception('You are not allowed to view this project');
-    }
-  }
-
+  /**
+   * Scans the Project roles to see which projects the user has access to.
+   *
+   * @return array
+   */
   public function getAllowedProjects()
   {
     // super admins may see and know all
@@ -106,13 +65,14 @@ class myUser extends sfGuardSecurityUser
       return null;
     }
 
-    return 0;
-  }
+    // iterate through all the user's roles and collect which projects he has access to
+    $result = array();
+    foreach ($this->getGuardUser()->getP1ngProjectRoleUser() as $role)
+    {
+      $result[] = $role->getP1ngProjectId();
+    }
 
-  public function signOut()
-  {
-    parent::signOut();
-    $this->setAttribute('project_id', null);
+    return $result;
   }
 
 }

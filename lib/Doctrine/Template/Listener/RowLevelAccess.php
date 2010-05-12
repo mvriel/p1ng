@@ -126,6 +126,13 @@ class Doctrine_Template_Listener_RowLevelAccess extends Doctrine_Record_Listener
     // if we are dealing with an array, generate an IN statement
     if (is_array($target))
     {
+      // just kill the query if target is empty
+      if (empty($target))
+      {
+        $query->andWhere('true=false');
+        return;
+      }
+
       $query->andWhereIn($field, $target);
       return;
     }

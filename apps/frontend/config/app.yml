@@ -3,6 +3,8 @@
 
 # default values
 all:
+  version: 1.0.1.0-ALPHA
+
   caMarkdownEditorPlugin:
     stylesheets:  ['/caMarkdownEditorPlugin/css/markItUpEditor/editor.css', '/caMarkdownEditorPlugin/css/markItUpEditor/markdown.css']
     javascripts:  ['/caMarkdownEditorPlugin/js/markItUpEditor/jquery.markitup.pack.js', '/caMarkdownEditorPlugin/js/markItUpEditor/markdown.js']

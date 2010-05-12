@@ -49,6 +49,7 @@
   </div>
 
   <div id="footer">
+    P1ng version <?php echo sfConfig::get('app_version');?> |
     Icons are part of the
     <a href="http://www.everaldo.com">Crystal Project</a> and copyright of
     <a href="mailto:everaldo@everaldo.com">Everaldo Coelho</a>
