@@ -1,0 +1,12 @@
+default: { credentials: admin }
+
+show:   { credentials: issue.read }
+index:  { credentials: issue.list }
+new:    { credentials: issue.create }
+create: { credentials: issue.create }
+edit:   { credentials: issue.update }
+update: { credentials: issue.update }
+delete: { credentials: issue.delete }
+
+transition: { credentials: issue.update }
+search:     { credentials: issue.list   }

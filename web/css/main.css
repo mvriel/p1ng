@@ -69,7 +69,7 @@ th, td
 {
   float:              right;
   padding-right:      5px;
-  margin-top:         -30px;
+  /*margin-top:         -30px;*/
 }
 
 #top #search input

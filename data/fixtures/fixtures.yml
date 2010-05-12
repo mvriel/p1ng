@@ -83,9 +83,33 @@ P1ngProjectRole:
     name: Customer
 
 sfGuardPermission:
-  issue_list:
-    name: issue.list
-    description: defines who may see a listing of issues
-  project_read:
-    name:        project.read
-    description: defines who may view project details
+  issue_list:       { name: issue.list,       description: defines who may see a listing of issues }
+  issue_create:     { name: issue.create,     description: defines who may create new issues }
+  issue_read:       { name: issue.read,       description: defines who may view issue details }
+  issue_update:     { name: issue.update,     description: defines who may update issues }
+  issue_delete:     { name: issue.delete,     description: defines who may delete issues }
+
+  project_list:     { name: project.list,     description: defines who may see listings of projects }
+  project_create:   { name: project.create,   description: defines who may create new projects }
+  project_read:     { name: project.read,     description: defines who may view project details }
+  project_update:   { name: project.update,   description: defines who may update projects }
+  project_delete:   { name: project.delete,   description: defines who may delete projects }
+
+  customer_list:    { name: customer.list,    description: defines who may see listings of customers }
+  customer_create:  { name: customer.create,  description: defines who may create new customers }
+  customer_read:    { name: customer.read,    description: defines who may view customer details }
+  customer_update:  { name: customer.update,  description: defines who may update customers }
+  customer_delete:  { name: customer.delete,  description: defines who may delete customers }
+
+  issue_log_list:   { name: issue_log.list,   description: defines who may see listings of issue_logs }
+  issue_log_create: { name: issue_log.create, description: defines who may create new issue_logs }
+  issue_log_read:   { name: issue_log.read,   description: defines who may view issue_log details }
+  issue_log_update: { name: issue_log.update, description: defines who may update issue_logs }
+  issue_log_delete: { name: issue_log.delete, description: defines who may delete issue_logs }
+
+  user_list:        { name: user.list,        description: defines who may see listings of users }
+  user_create:      { name: user.create,      description: defines who may create new users }
+  user_read:        { name: user.read,        description: defines who may view user details }
+  user_update:      { name: user.update,      description: defines who may update users }
+  user_delete:      { name: user.delete,      description: defines who may delete users }
+

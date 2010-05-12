@@ -1,0 +1,9 @@
+default: { credentials: admin }
+
+show:   { credentials: issue_log.read }
+index:  { credentials: issue_log.list }
+new:    { credentials: issue_log.create }
+create: { credentials: issue_log.create }
+edit:   { credentials: issue_log.update }
+update: { credentials: issue_log.update }
+delete: { credentials: issue_log.delete }
