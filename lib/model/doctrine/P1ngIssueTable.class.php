@@ -2,7 +2,6 @@
 
 class P1ngIssueTable extends Doctrine_Table
 {
-
   /**
    * Returns a (Zend) Lucene index object
    *

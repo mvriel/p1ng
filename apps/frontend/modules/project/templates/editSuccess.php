@@ -1,3 +1,3 @@
-<h1>Edit P1ng customer</h1>
+<h1>Update project</h1>
 
 <?php include_partial('form', array('form' => $form)) ?>

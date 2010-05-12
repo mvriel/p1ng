@@ -12,21 +12,31 @@ class P1ngIssueForm extends BaseP1ngIssueForm
 {
   public function configure()
   {
-  	$this->getWidget('created_at')->setDefault(time());
-  	$this->getValidator('created_at')->setOption('required', false);
-  	$this->getWidget('updated_at')->setDefault(time());
-  	$this->getValidator('updated_at')->setOption('required', false);
+    $this->getWidgetSchema()->setLabel('p1ng_project_id', 'Project');
 
-  	$this->embedRelation('custom');
+    unset($this['created_at']);
+    unset($this['updated_at']);
+
+    $this->embedRelation('custom');
   }
 
   protected function doBind(array $values)
   {
     if ($this->isNew())
     {
-      $values['p1ng_issue_status_id'] = sfConfig::get('p1ng_issue_status_initial', 1);
+      $workflow = Doctrine::getTable('P1ngWorkflow')->findActiveByP1ngProjectId($values['p1ng_project_id']);
+      if (!$workflow)
+      {
+        throw new Exception('Unable to determine the active workflow');
+      }
+
+      $values['p1ng_issue_status_id'] = $workflow->getP1ngIssueStatusId();
     }
+    else
+    {
+      $values['p1ng_issue_status_id'] = $this->getObject()->getP1ngIssueStatusId();
+    }
+
     parent::doBind($values);
   }
-
 }

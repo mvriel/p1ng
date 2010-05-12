@@ -65,8 +65,9 @@
   <a href="<?php echo url_for('issue/index') ?>">Return to list</a><br />
   <a href="<?php echo url_for('issue/edit?id=' . $p1ng_issue->getId()) ?>">Edit</a><br />
   <hr style="border-color: #eeeeee" />
-<?php foreach ($p1ng_issue->getP1ngIssueStatus()->getFrom() as $transition): ?>
-  <a href="<?php echo url_for('@transition?id=' . $p1ng_issue->getId() . '&transition_id=' . $transition->getId());?>"><?php echo $transition->getName(); ?></a>
+<?php foreach ($p1ng_issue->getP1ngIssueStatus()->getTo() as $transition): ?>
+  <?php if ($transition->getP1ngWorkflowId() !== Doctrine::getTable('P1ngWorkflow')->findActiveByP1ngProjectId($p1ng_issue->getP1ngProjectId())->getId()) continue; ?>
+  <a href="<?php echo url_for('@transit?id=' . $p1ng_issue->getId() . '&transition_id=' . $transition->getId());?>"><?php echo $transition->getName(); ?></a>
 <?php endforeach; ?>
 </div>
 <?php end_slot(); ?>

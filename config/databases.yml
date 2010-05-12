@@ -7,4 +7,7 @@ all:
     param:
       dsn:      mysql:host=localhost;dbname=p1ng2
       username: root
-      password: 
+      password:
+      attributes:
+        use_dql_callbacks: true
+        use_native_enum:   true

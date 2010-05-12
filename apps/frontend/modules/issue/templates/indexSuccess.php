@@ -10,6 +10,7 @@
   </thead>
   <tbody>
     <?php foreach ($p1ng_issues as $p1ng_issue): ?>
+    <?php if (!$sf_user->hasCredential('issue.list', true, array(sfOutputEscaper::unescape($p1ng_issue->getP1ngProject())))) continue; ?>
     <tr>
       <td><a href="<?php echo url_for('issue/show?id='.$p1ng_issue->getId()) ?>"><?php echo $p1ng_issue; ?></a></td>
       <td width="100%"><a href="<?php echo url_for('issue/show?id='.$p1ng_issue->getId()) ?>"><?php echo $p1ng_issue->getSubject() ?></a></td>

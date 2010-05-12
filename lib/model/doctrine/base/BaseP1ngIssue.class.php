@@ -75,8 +75,16 @@ abstract class BaseP1ngIssue extends sfDoctrineRecord
         $timestampable0 = new Doctrine_Template_Timestampable();
         $softdelete0 = new Doctrine_Template_SoftDelete();
         $signable0 = new Doctrine_Template_Signable();
+        $rowlevelaccess0 = new Doctrine_Template_RowLevelAccess(array(
+             'field' => 'p1ng_project_id',
+             'callback' => 
+             array(
+              'method' => 'getAllowedProjects',
+             ),
+             ));
         $this->actAs($timestampable0);
         $this->actAs($softdelete0);
         $this->actAs($signable0);
+        $this->actAs($rowlevelaccess0);
     }
 }

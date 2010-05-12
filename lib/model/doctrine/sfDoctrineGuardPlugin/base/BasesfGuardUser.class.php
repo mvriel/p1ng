@@ -18,6 +18,8 @@
  * @property Doctrine_Collection $sfGuardUserPermission
  * @property Doctrine_Collection $sfGuardUserGroup
  * @property sfGuardRememberKey $RememberKeys
+ * @property Doctrine_Collection $P1ngRowLevelAccess
+ * @property Doctrine_Collection $P1ngProjectRoleUser
  * 
  * @method integer             getId()                    Returns the current record's "id" value
  * @method string              getUsername()              Returns the current record's "username" value
@@ -32,6 +34,8 @@
  * @method Doctrine_Collection getSfGuardUserPermission() Returns the current record's "sfGuardUserPermission" collection
  * @method Doctrine_Collection getSfGuardUserGroup()      Returns the current record's "sfGuardUserGroup" collection
  * @method sfGuardRememberKey  getRememberKeys()          Returns the current record's "RememberKeys" value
+ * @method Doctrine_Collection getP1ngRowLevelAccess()    Returns the current record's "P1ngRowLevelAccess" collection
+ * @method Doctrine_Collection getP1ngProjectRoleUser()   Returns the current record's "P1ngProjectRoleUser" collection
  * @method sfGuardUser         setId()                    Sets the current record's "id" value
  * @method sfGuardUser         setUsername()              Sets the current record's "username" value
  * @method sfGuardUser         setAlgorithm()             Sets the current record's "algorithm" value
@@ -45,6 +49,8 @@
  * @method sfGuardUser         setSfGuardUserPermission() Sets the current record's "sfGuardUserPermission" collection
  * @method sfGuardUser         setSfGuardUserGroup()      Sets the current record's "sfGuardUserGroup" collection
  * @method sfGuardUser         setRememberKeys()          Sets the current record's "RememberKeys" value
+ * @method sfGuardUser         setP1ngRowLevelAccess()    Sets the current record's "P1ngRowLevelAccess" collection
+ * @method sfGuardUser         setP1ngProjectRoleUser()   Sets the current record's "P1ngProjectRoleUser" collection
  * 
  * @package    p1ng
  * @subpackage model
@@ -127,6 +133,14 @@ abstract class BasesfGuardUser extends sfDoctrineRecord
         $this->hasOne('sfGuardRememberKey as RememberKeys', array(
              'local' => 'id',
              'foreign' => 'user_id'));
+
+        $this->hasMany('P1ngRowLevelAccess', array(
+             'local' => 'id',
+             'foreign' => 'sf_guard_user_id'));
+
+        $this->hasMany('P1ngProjectRoleUser', array(
+             'local' => 'id',
+             'foreign' => 'sf_guard_user_id'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();
         $this->actAs($timestampable0);

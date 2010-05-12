@@ -3,6 +3,10 @@ sfGuardUser:
     username:       admin
     password:       admin
     is_super_admin: true
+  sgu_mvriel:
+    username:       mvriel
+    password:       mvriel
+    is_super_admin: false
 
 sfGuardPermission:
   sgp_admin:
@@ -13,6 +17,9 @@ sfGuardGroup:
   sgg_admin:
     name:           admin
     description:    Administrator group
+  sgg_user:
+    name:           user
+    description:    User group
 
 sfGuardGroupPermission:
   sggp_admin:
@@ -23,3 +30,6 @@ sfGuardUserGroup:
   sgug_admin:
     sfGuardGroup:       sgg_admin
     sfGuardUser:        sgu_admin
+  sgug_mvriel:
+    sfGuardGroup:       sgg_user
+    sfGuardUser:        sgu_mvriel

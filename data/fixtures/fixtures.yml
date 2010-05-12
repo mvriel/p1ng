@@ -73,3 +73,16 @@ P1ngProject:
     p1ng_customer_id: 1
     name: p1ng
     code: P1
+
+P1ngProjectRole:
+  admin:
+    name: Administrator
+  developer:
+    name: Developer
+  customer:
+    name: Customer
+
+sfGuardPermission:
+  issue_list:
+    name: issue.list
+    description: defines who may see a listing of issues

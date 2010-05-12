@@ -12,5 +12,8 @@ class P1ngProjectForm extends BaseP1ngProjectForm
 {
   public function configure()
   {
+    unset($this['created_at']);
+    unset($this['updated_at']);
+    unset($this['deleted_at']);
   }
 }

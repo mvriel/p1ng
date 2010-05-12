@@ -12,22 +12,38 @@ class projectActions extends sfActions
 {
   public function executeIndex(sfWebRequest $request)
   {
-    $this->p1ng_customers = $this->getRoute()->getObjects();
+    if ($request->getParameter('select'))
+    {
+      try
+      {
+        $this->getUser()->setProjectId($request->getParameter('select'));
+        $this->redirect('@homepage');
+      }
+      catch(StopException $e)
+      {
+        throw $e;
+      } catch(Exception $e)
+      {
+        $this->getUser()->setFlash('error', $e->getMessage());
+      }
+    }
+
+    $this->p1ng_projects = $this->getRoute()->getObjects();
   }
 
   public function executeShow(sfWebRequest $request)
   {
-    $this->p1ng_customer = $this->getRoute()->getObject();
+    $this->p1ng_project = $this->getRoute()->getObject();
   }
 
   public function executeNew(sfWebRequest $request)
   {
-    $this->form = new P1ngCustomerForm();
+    $this->form = new P1ngProjectForm();
   }
 
   public function executeCreate(sfWebRequest $request)
   {
-    $this->form = new P1ngCustomerForm();
+    $this->form = new P1ngProjectForm();
 
     $this->processForm($request, $this->form);
 
@@ -36,12 +52,12 @@ class projectActions extends sfActions
 
   public function executeEdit(sfWebRequest $request)
   {
-    $this->form = new P1ngCustomerForm($this->getRoute()->getObject());
+    $this->form = new P1ngProjectForm($this->getRoute()->getObject());
   }
 
   public function executeUpdate(sfWebRequest $request)
   {
-    $this->form = new P1ngCustomerForm($this->getRoute()->getObject());
+    $this->form = new P1ngProjectForm($this->getRoute()->getObject());
 
     $this->processForm($request, $this->form);
 
@@ -60,11 +76,13 @@ class projectActions extends sfActions
   protected function processForm(sfWebRequest $request, sfForm $form)
   {
     $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
-    if ($form->isValid())
+    if (!$form->isValid())
     {
-      $p1ng_customer = $form->save();
-
-      $this->redirect('project/edit?id='.$p1ng_customer->getId());
+      return;
     }
+
+    $p1ng_project = $form->save();
+    $this->getUser()->setProjectId($p1ng_project->getId());
+    $this->redirect('@homepage');
   }
 }

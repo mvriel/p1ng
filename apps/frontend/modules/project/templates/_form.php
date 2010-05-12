@@ -10,10 +10,6 @@
       <tr>
         <td colspan="2">
           <?php echo $form->renderHiddenFields(false) ?>
-          &nbsp;<a href="<?php echo url_for('project/index') ?>">Back to list</a>
-          <?php if (!$form->getObject()->isNew()): ?>
-            &nbsp;<?php echo link_to('Delete', 'project/delete?id='.$form->getObject()->getId(), array('method' => 'delete', 'confirm' => 'Are you sure?')) ?>
-          <?php endif; ?>
           <input type="submit" value="Save" />
         </td>
       </tr>
@@ -28,33 +24,29 @@
         </td>
       </tr>
       <tr>
+        <th><?php echo $form['p1ng_customer_id']->renderLabel() ?></th>
+        <td>
+          <?php echo $form['p1ng_customer_id']->renderError() ?>
+          <?php echo $form['p1ng_customer_id'] ?>
+        </td>
+      </tr>
+      <tr>
         <th><?php echo $form['name']->renderLabel() ?></th>
         <td>
           <?php echo $form['name']->renderError() ?>
           <?php echo $form['name'] ?>
         </td>
       </tr>
-      <tr>
-        <th><?php echo $form['created_at']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['created_at']->renderError() ?>
-          <?php echo $form['created_at'] ?>
-        </td>
-      </tr>
-      <tr>
-        <th><?php echo $form['updated_at']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['updated_at']->renderError() ?>
-          <?php echo $form['updated_at'] ?>
-        </td>
-      </tr>
-      <tr>
-        <th><?php echo $form['deleted_at']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['deleted_at']->renderError() ?>
-          <?php echo $form['deleted_at'] ?>
-        </td>
-      </tr>
     </tbody>
   </table>
 </form>
+
+<?php slot('right-sidebar'); ?>
+<div class="section">
+  <h1>Actions</h1>
+  <a href="<?php echo url_for('project/index') ?>">Back to overview</a>
+  <?php if (!$form->getObject()->isNew()): ?>
+    <?php echo link_to('Delete', 'project/delete?id='.$form->getObject()->getId(), array('method' => 'delete', 'confirm' => 'Are you sure?')) ?>
+  <?php endif; ?>
+</div>
+<?php end_slot(); ?>

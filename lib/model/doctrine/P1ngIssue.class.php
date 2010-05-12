@@ -12,6 +12,7 @@
  */
 class P1ngIssue extends BaseP1ngIssue
 {
+
   public function __toString()
   {
     return $this->getP1ngProject()->getP1ngCustomer()->getCode() . ':' . $this->getP1ngProject()->getCode() . '-' . $this->getId();

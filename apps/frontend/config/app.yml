@@ -6,3 +6,7 @@ all:
   caMarkdownEditorPlugin:
     stylesheets:  ['/caMarkdownEditorPlugin/css/markItUpEditor/editor.css', '/caMarkdownEditorPlugin/css/markItUpEditor/markdown.css']
     javascripts:  ['/caMarkdownEditorPlugin/js/markItUpEditor/jquery.markitup.pack.js', '/caMarkdownEditorPlugin/js/markItUpEditor/markdown.js']
+
+  project:
+    select_module: project
+    select_action: index

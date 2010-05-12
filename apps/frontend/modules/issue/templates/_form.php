@@ -10,10 +10,6 @@
       <tr>
         <td colspan="2">
           <?php echo $form->renderHiddenFields(false) ?>
-          &nbsp;<a href="<?php echo url_for('issue/index') ?>">Back to list</a>
-          <?php if (!$form->getObject()->isNew()): ?>
-            &nbsp;<?php echo link_to('Delete', 'issue/delete?id='.$form->getObject()->getId(), array('method' => 'delete', 'confirm' => 'Are you sure?')) ?>
-          <?php endif; ?>
           <input type="submit" value="Save" />
         </td>
       </tr>
@@ -40,3 +36,15 @@
     </tbody>
   </table>
 </form>
+
+<?php slot('right-sidebar'); ?>
+<div class="section">
+  <h1>Actions</h1>
+  <?php if (!$form->getObject()->isNew()): ?>
+  <a href="<?php echo url_for('issue/show?id='.$form->getObject()->getId()) ?>">Back</a><br />
+  <?php echo link_to('Delete', 'issue/delete?id='.$form->getObject()->getId(), array('method' => 'delete', 'confirm' => 'Are you sure?')) ?><br />
+  <?php else: ?>
+  <a href="<?php echo url_for('issue/index') ?>">Back to overview</a><br />
+  <?php endif; ?>
+</div>
+<?php end_slot(); ?>

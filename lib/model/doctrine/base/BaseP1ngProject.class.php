@@ -11,19 +11,22 @@
  * @property P1ngCustomer $P1ngCustomer
  * @property Doctrine_Collection $P1ngWorkflow
  * @property Doctrine_Collection $issues
+ * @property Doctrine_Collection $P1ngProjectRoleUser
  * 
- * @method integer             getP1ngCustomerId()   Returns the current record's "p1ng_customer_id" value
- * @method string              getCode()             Returns the current record's "code" value
- * @method string              getName()             Returns the current record's "name" value
- * @method P1ngCustomer        getP1ngCustomer()     Returns the current record's "P1ngCustomer" value
- * @method Doctrine_Collection getP1ngWorkflow()     Returns the current record's "P1ngWorkflow" collection
- * @method Doctrine_Collection getIssues()           Returns the current record's "issues" collection
- * @method P1ngProject         setP1ngCustomerId()   Sets the current record's "p1ng_customer_id" value
- * @method P1ngProject         setCode()             Sets the current record's "code" value
- * @method P1ngProject         setName()             Sets the current record's "name" value
- * @method P1ngProject         setP1ngCustomer()     Sets the current record's "P1ngCustomer" value
- * @method P1ngProject         setP1ngWorkflow()     Sets the current record's "P1ngWorkflow" collection
- * @method P1ngProject         setIssues()           Sets the current record's "issues" collection
+ * @method integer             getP1ngCustomerId()      Returns the current record's "p1ng_customer_id" value
+ * @method string              getCode()                Returns the current record's "code" value
+ * @method string              getName()                Returns the current record's "name" value
+ * @method P1ngCustomer        getP1ngCustomer()        Returns the current record's "P1ngCustomer" value
+ * @method Doctrine_Collection getP1ngWorkflow()        Returns the current record's "P1ngWorkflow" collection
+ * @method Doctrine_Collection getIssues()              Returns the current record's "issues" collection
+ * @method Doctrine_Collection getP1ngProjectRoleUser() Returns the current record's "P1ngProjectRoleUser" collection
+ * @method P1ngProject         setP1ngCustomerId()      Sets the current record's "p1ng_customer_id" value
+ * @method P1ngProject         setCode()                Sets the current record's "code" value
+ * @method P1ngProject         setName()                Sets the current record's "name" value
+ * @method P1ngProject         setP1ngCustomer()        Sets the current record's "P1ngCustomer" value
+ * @method P1ngProject         setP1ngWorkflow()        Sets the current record's "P1ngWorkflow" collection
+ * @method P1ngProject         setIssues()              Sets the current record's "issues" collection
+ * @method P1ngProject         setP1ngProjectRoleUser() Sets the current record's "P1ngProjectRoleUser" collection
  * 
  * @package    p1ng
  * @subpackage model
@@ -37,6 +40,7 @@ abstract class BaseP1ngProject extends sfDoctrineRecord
         $this->setTableName('p1ng_project');
         $this->hasColumn('p1ng_customer_id', 'integer', null, array(
              'type' => 'integer',
+             'notnull' => true,
              ));
         $this->hasColumn('code', 'string', 20, array(
              'type' => 'string',
@@ -44,9 +48,10 @@ abstract class BaseP1ngProject extends sfDoctrineRecord
              'unique' => true,
              'length' => '20',
              ));
-        $this->hasColumn('name', 'string', null, array(
+        $this->hasColumn('name', 'string', 255, array(
              'type' => 'string',
              'notnull' => true,
+             'length' => '255',
              ));
     }
 
@@ -65,11 +70,22 @@ abstract class BaseP1ngProject extends sfDoctrineRecord
              'local' => 'id',
              'foreign' => 'p1ng_project_id'));
 
+        $this->hasMany('P1ngProjectRoleUser', array(
+             'local' => 'id',
+             'foreign' => 'p1ng_project_id'));
+
         $timestampable0 = new Doctrine_Template_Timestampable();
         $softdelete0 = new Doctrine_Template_SoftDelete();
         $signable0 = new Doctrine_Template_Signable();
+        $rowlevelaccess0 = new Doctrine_Template_RowLevelAccess(array(
+             'callback' => 
+             array(
+              'method' => 'getAllowedProjects',
+             ),
+             ));
         $this->actAs($timestampable0);
         $this->actAs($softdelete0);
         $this->actAs($signable0);
+        $this->actAs($rowlevelaccess0);
     }
 }
