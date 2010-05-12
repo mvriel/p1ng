@@ -1,0 +1,9 @@
+default: { credentials: admin }
+
+show:   { credentials: project.read }
+index:  { credentials: project.list }
+new:    { credentials: project.create }
+create: { credentials: project.create }
+edit:   { credentials: project.update }
+update: { credentials: project.update }
+delete: { credentials: project.delete }

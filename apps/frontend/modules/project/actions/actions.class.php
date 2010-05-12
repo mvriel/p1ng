@@ -12,22 +12,6 @@ class projectActions extends sfActions
 {
   public function executeIndex(sfWebRequest $request)
   {
-    if ($request->getParameter('select'))
-    {
-      try
-      {
-        $this->getUser()->setProjectId($request->getParameter('select'));
-        $this->redirect('@homepage');
-      }
-      catch(StopException $e)
-      {
-        throw $e;
-      } catch(Exception $e)
-      {
-        $this->getUser()->setFlash('error', $e->getMessage());
-      }
-    }
-
     $this->p1ng_projects = $this->getRoute()->getObjects();
   }
 

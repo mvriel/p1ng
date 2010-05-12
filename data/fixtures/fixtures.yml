@@ -86,3 +86,6 @@ sfGuardPermission:
   issue_list:
     name: issue.list
     description: defines who may see a listing of issues
+  project_read:
+    name:        project.read
+    description: defines who may view project details
