@@ -12,21 +12,24 @@
  * @property Doctrine_Collection $permissions
  * @property Doctrine_Collection $sfGuardGroupPermission
  * @property Doctrine_Collection $sfGuardUserGroup
+ * @property Doctrine_Collection $P1ngProjectGroupPermission
  * 
- * @method integer             getId()                     Returns the current record's "id" value
- * @method string              getName()                   Returns the current record's "name" value
- * @method string              getDescription()            Returns the current record's "description" value
- * @method Doctrine_Collection getUsers()                  Returns the current record's "users" collection
- * @method Doctrine_Collection getPermissions()            Returns the current record's "permissions" collection
- * @method Doctrine_Collection getSfGuardGroupPermission() Returns the current record's "sfGuardGroupPermission" collection
- * @method Doctrine_Collection getSfGuardUserGroup()       Returns the current record's "sfGuardUserGroup" collection
- * @method sfGuardGroup        setId()                     Sets the current record's "id" value
- * @method sfGuardGroup        setName()                   Sets the current record's "name" value
- * @method sfGuardGroup        setDescription()            Sets the current record's "description" value
- * @method sfGuardGroup        setUsers()                  Sets the current record's "users" collection
- * @method sfGuardGroup        setPermissions()            Sets the current record's "permissions" collection
- * @method sfGuardGroup        setSfGuardGroupPermission() Sets the current record's "sfGuardGroupPermission" collection
- * @method sfGuardGroup        setSfGuardUserGroup()       Sets the current record's "sfGuardUserGroup" collection
+ * @method integer             getId()                         Returns the current record's "id" value
+ * @method string              getName()                       Returns the current record's "name" value
+ * @method string              getDescription()                Returns the current record's "description" value
+ * @method Doctrine_Collection getUsers()                      Returns the current record's "users" collection
+ * @method Doctrine_Collection getPermissions()                Returns the current record's "permissions" collection
+ * @method Doctrine_Collection getSfGuardGroupPermission()     Returns the current record's "sfGuardGroupPermission" collection
+ * @method Doctrine_Collection getSfGuardUserGroup()           Returns the current record's "sfGuardUserGroup" collection
+ * @method Doctrine_Collection getP1ngProjectGroupPermission() Returns the current record's "P1ngProjectGroupPermission" collection
+ * @method sfGuardGroup        setId()                         Sets the current record's "id" value
+ * @method sfGuardGroup        setName()                       Sets the current record's "name" value
+ * @method sfGuardGroup        setDescription()                Sets the current record's "description" value
+ * @method sfGuardGroup        setUsers()                      Sets the current record's "users" collection
+ * @method sfGuardGroup        setPermissions()                Sets the current record's "permissions" collection
+ * @method sfGuardGroup        setSfGuardGroupPermission()     Sets the current record's "sfGuardGroupPermission" collection
+ * @method sfGuardGroup        setSfGuardUserGroup()           Sets the current record's "sfGuardUserGroup" collection
+ * @method sfGuardGroup        setP1ngProjectGroupPermission() Sets the current record's "P1ngProjectGroupPermission" collection
  * 
  * @package    p1ng
  * @subpackage model
@@ -75,6 +78,10 @@ abstract class BasesfGuardGroup extends sfDoctrineRecord
         $this->hasMany('sfGuardUserGroup', array(
              'local' => 'id',
              'foreign' => 'group_id'));
+
+        $this->hasMany('P1ngProjectGroupPermission', array(
+             'local' => 'id',
+             'foreign' => 'sf_guard_group_id'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();
         $this->actAs($timestampable0);

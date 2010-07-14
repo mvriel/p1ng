@@ -19,11 +19,19 @@ issue_search:
   url:   /issue/search/*
   param: { module: issue, action: search }
 
+issue_report:
+  url:   /issue/report/:report
+  param: { module: issue, action: report }
+
 workflow_graph:
   url:   /workflow/:id/graph
   class: sfDoctrineRoute
   options: { model: P1ngWorkflow, type: object }
   param: { module: workflow, action: graph }
+
+project_permission:
+  class: sfDoctrineRouteCollection
+  options: { model: P1ngProjectUserPermission }
 
 workflow:
   class: sfDoctrineRouteCollection

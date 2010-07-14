@@ -41,10 +41,10 @@
   </table>
 </form>
 
-<?php slot('right-sidebar'); ?>
+<?php slot('sidebar'); ?>
 <div class="section">
   <h1>Actions</h1>
-  <a href="<?php echo url_for('project/index') ?>">Back to overview</a>
+  <a href="<?php echo url_for('project/index') ?>">Back to overview</a><br />
   <?php if (!$form->getObject()->isNew()): ?>
     <?php echo link_to('Delete', 'project/delete?id='.$form->getObject()->getId(), array('method' => 'delete', 'confirm' => 'Are you sure?')) ?>
   <?php endif; ?>

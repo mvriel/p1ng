@@ -9,24 +9,30 @@
  * @property string $code
  * @property string $name
  * @property P1ngCustomer $P1ngCustomer
+ * @property Doctrine_Collection $P1ngProjectUserPermission
+ * @property Doctrine_Collection $P1ngProjectGroupPermission
  * @property Doctrine_Collection $P1ngWorkflow
  * @property Doctrine_Collection $issues
  * @property Doctrine_Collection $P1ngProjectRoleUser
  * 
- * @method integer             getP1ngCustomerId()      Returns the current record's "p1ng_customer_id" value
- * @method string              getCode()                Returns the current record's "code" value
- * @method string              getName()                Returns the current record's "name" value
- * @method P1ngCustomer        getP1ngCustomer()        Returns the current record's "P1ngCustomer" value
- * @method Doctrine_Collection getP1ngWorkflow()        Returns the current record's "P1ngWorkflow" collection
- * @method Doctrine_Collection getIssues()              Returns the current record's "issues" collection
- * @method Doctrine_Collection getP1ngProjectRoleUser() Returns the current record's "P1ngProjectRoleUser" collection
- * @method P1ngProject         setP1ngCustomerId()      Sets the current record's "p1ng_customer_id" value
- * @method P1ngProject         setCode()                Sets the current record's "code" value
- * @method P1ngProject         setName()                Sets the current record's "name" value
- * @method P1ngProject         setP1ngCustomer()        Sets the current record's "P1ngCustomer" value
- * @method P1ngProject         setP1ngWorkflow()        Sets the current record's "P1ngWorkflow" collection
- * @method P1ngProject         setIssues()              Sets the current record's "issues" collection
- * @method P1ngProject         setP1ngProjectRoleUser() Sets the current record's "P1ngProjectRoleUser" collection
+ * @method integer             getP1ngCustomerId()             Returns the current record's "p1ng_customer_id" value
+ * @method string              getCode()                       Returns the current record's "code" value
+ * @method string              getName()                       Returns the current record's "name" value
+ * @method P1ngCustomer        getP1ngCustomer()               Returns the current record's "P1ngCustomer" value
+ * @method Doctrine_Collection getP1ngProjectUserPermission()  Returns the current record's "P1ngProjectUserPermission" collection
+ * @method Doctrine_Collection getP1ngProjectGroupPermission() Returns the current record's "P1ngProjectGroupPermission" collection
+ * @method Doctrine_Collection getP1ngWorkflow()               Returns the current record's "P1ngWorkflow" collection
+ * @method Doctrine_Collection getIssues()                     Returns the current record's "issues" collection
+ * @method Doctrine_Collection getP1ngProjectRoleUser()        Returns the current record's "P1ngProjectRoleUser" collection
+ * @method P1ngProject         setP1ngCustomerId()             Sets the current record's "p1ng_customer_id" value
+ * @method P1ngProject         setCode()                       Sets the current record's "code" value
+ * @method P1ngProject         setName()                       Sets the current record's "name" value
+ * @method P1ngProject         setP1ngCustomer()               Sets the current record's "P1ngCustomer" value
+ * @method P1ngProject         setP1ngProjectUserPermission()  Sets the current record's "P1ngProjectUserPermission" collection
+ * @method P1ngProject         setP1ngProjectGroupPermission() Sets the current record's "P1ngProjectGroupPermission" collection
+ * @method P1ngProject         setP1ngWorkflow()               Sets the current record's "P1ngWorkflow" collection
+ * @method P1ngProject         setIssues()                     Sets the current record's "issues" collection
+ * @method P1ngProject         setP1ngProjectRoleUser()        Sets the current record's "P1ngProjectRoleUser" collection
  * 
  * @package    p1ng
  * @subpackage model
@@ -61,6 +67,14 @@ abstract class BaseP1ngProject extends sfDoctrineRecord
         $this->hasOne('P1ngCustomer', array(
              'local' => 'p1ng_customer_id',
              'foreign' => 'id'));
+
+        $this->hasMany('P1ngProjectUserPermission', array(
+             'local' => 'id',
+             'foreign' => 'p1ng_project_id'));
+
+        $this->hasMany('P1ngProjectGroupPermission', array(
+             'local' => 'id',
+             'foreign' => 'p1ng_project_id'));
 
         $this->hasMany('P1ngWorkflow', array(
              'local' => 'id',

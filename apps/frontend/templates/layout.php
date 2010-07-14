@@ -13,16 +13,22 @@
 <div id="page">
 
   <div id="top">
-    <img src="/images/banner-left.png" class="left" /> <img src="/images/small-logo-text.png" class="small-logo" />
+    <img src="/images/banner-left.png" class="left" align="top"/>
+  <?php if ($sf_user->isAuthenticated()): ?>
+    <a href="<?php echo url_for('project/index'); ?>" title="Select another project">
+      <img src="<?php echo image_path('icons/project24x24.png');?>" border="0" align="top" style="margin-top: 3px;" /> <?php echo (string)$sf_user->getProject(); ?>
+    </a>
 
     <form id="search" style="display: inline" action="<?php echo url_for('issue/search');?>" method="get">
       <input type="text" name="query" class="text" /> <input type="submit" value="Search" />
     </form>
+  <?php endif; ?>
   </div>
 
   <div id="menu">
   <?php if ($sf_user->isAuthenticated()): ?>
     <a href="<?php echo url_for('@homepage');?>" class="menuitem">Home</a>
+    <a href="<?php echo url_for('project/index');?>" class="menuitem">Projects</a>
     <a href="<?php echo url_for('issue/index');?>" class="menuitem">Issues</a>
     <?php if ($sf_user->hasCredential('administration.read')): ?>
     <a href="<?php echo url_for('default/admin');?>" class="menuitem">Administration</a>
@@ -34,13 +40,14 @@
   <div id="banner"></div>
 
   <div id="sidebar">
-  <?php echo get_slot('right-sidebar');?>
+    <?php echo get_slot('sidebar');?>
   </div>
 
   <div id="content">
     <?php if ($sf_user->hasFlash('error')): ?>
     <div class="error-box"><?php echo $sf_user->getFlash('error'); ?></div>
     <?php endif; ?>
+
     <?php if ($sf_user->hasFlash('notice')): ?>
     <div class="notice-box"><?php echo $sf_user->getFlash('error'); ?></div>
     <?php endif; ?>

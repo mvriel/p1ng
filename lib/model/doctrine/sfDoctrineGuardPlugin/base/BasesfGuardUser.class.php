@@ -18,39 +18,42 @@
  * @property Doctrine_Collection $sfGuardUserPermission
  * @property Doctrine_Collection $sfGuardUserGroup
  * @property sfGuardRememberKey $RememberKeys
+ * @property Doctrine_Collection $P1ngProjectUserPermission
  * @property Doctrine_Collection $P1ngRowLevelAccess
  * @property Doctrine_Collection $P1ngProjectRoleUser
  * 
- * @method integer             getId()                    Returns the current record's "id" value
- * @method string              getUsername()              Returns the current record's "username" value
- * @method string              getAlgorithm()             Returns the current record's "algorithm" value
- * @method string              getSalt()                  Returns the current record's "salt" value
- * @method string              getPassword()              Returns the current record's "password" value
- * @method boolean             getIsActive()              Returns the current record's "is_active" value
- * @method boolean             getIsSuperAdmin()          Returns the current record's "is_super_admin" value
- * @method timestamp           getLastLogin()             Returns the current record's "last_login" value
- * @method Doctrine_Collection getGroups()                Returns the current record's "groups" collection
- * @method Doctrine_Collection getPermissions()           Returns the current record's "permissions" collection
- * @method Doctrine_Collection getSfGuardUserPermission() Returns the current record's "sfGuardUserPermission" collection
- * @method Doctrine_Collection getSfGuardUserGroup()      Returns the current record's "sfGuardUserGroup" collection
- * @method sfGuardRememberKey  getRememberKeys()          Returns the current record's "RememberKeys" value
- * @method Doctrine_Collection getP1ngRowLevelAccess()    Returns the current record's "P1ngRowLevelAccess" collection
- * @method Doctrine_Collection getP1ngProjectRoleUser()   Returns the current record's "P1ngProjectRoleUser" collection
- * @method sfGuardUser         setId()                    Sets the current record's "id" value
- * @method sfGuardUser         setUsername()              Sets the current record's "username" value
- * @method sfGuardUser         setAlgorithm()             Sets the current record's "algorithm" value
- * @method sfGuardUser         setSalt()                  Sets the current record's "salt" value
- * @method sfGuardUser         setPassword()              Sets the current record's "password" value
- * @method sfGuardUser         setIsActive()              Sets the current record's "is_active" value
- * @method sfGuardUser         setIsSuperAdmin()          Sets the current record's "is_super_admin" value
- * @method sfGuardUser         setLastLogin()             Sets the current record's "last_login" value
- * @method sfGuardUser         setGroups()                Sets the current record's "groups" collection
- * @method sfGuardUser         setPermissions()           Sets the current record's "permissions" collection
- * @method sfGuardUser         setSfGuardUserPermission() Sets the current record's "sfGuardUserPermission" collection
- * @method sfGuardUser         setSfGuardUserGroup()      Sets the current record's "sfGuardUserGroup" collection
- * @method sfGuardUser         setRememberKeys()          Sets the current record's "RememberKeys" value
- * @method sfGuardUser         setP1ngRowLevelAccess()    Sets the current record's "P1ngRowLevelAccess" collection
- * @method sfGuardUser         setP1ngProjectRoleUser()   Sets the current record's "P1ngProjectRoleUser" collection
+ * @method integer             getId()                        Returns the current record's "id" value
+ * @method string              getUsername()                  Returns the current record's "username" value
+ * @method string              getAlgorithm()                 Returns the current record's "algorithm" value
+ * @method string              getSalt()                      Returns the current record's "salt" value
+ * @method string              getPassword()                  Returns the current record's "password" value
+ * @method boolean             getIsActive()                  Returns the current record's "is_active" value
+ * @method boolean             getIsSuperAdmin()              Returns the current record's "is_super_admin" value
+ * @method timestamp           getLastLogin()                 Returns the current record's "last_login" value
+ * @method Doctrine_Collection getGroups()                    Returns the current record's "groups" collection
+ * @method Doctrine_Collection getPermissions()               Returns the current record's "permissions" collection
+ * @method Doctrine_Collection getSfGuardUserPermission()     Returns the current record's "sfGuardUserPermission" collection
+ * @method Doctrine_Collection getSfGuardUserGroup()          Returns the current record's "sfGuardUserGroup" collection
+ * @method sfGuardRememberKey  getRememberKeys()              Returns the current record's "RememberKeys" value
+ * @method Doctrine_Collection getP1ngProjectUserPermission() Returns the current record's "P1ngProjectUserPermission" collection
+ * @method Doctrine_Collection getP1ngRowLevelAccess()        Returns the current record's "P1ngRowLevelAccess" collection
+ * @method Doctrine_Collection getP1ngProjectRoleUser()       Returns the current record's "P1ngProjectRoleUser" collection
+ * @method sfGuardUser         setId()                        Sets the current record's "id" value
+ * @method sfGuardUser         setUsername()                  Sets the current record's "username" value
+ * @method sfGuardUser         setAlgorithm()                 Sets the current record's "algorithm" value
+ * @method sfGuardUser         setSalt()                      Sets the current record's "salt" value
+ * @method sfGuardUser         setPassword()                  Sets the current record's "password" value
+ * @method sfGuardUser         setIsActive()                  Sets the current record's "is_active" value
+ * @method sfGuardUser         setIsSuperAdmin()              Sets the current record's "is_super_admin" value
+ * @method sfGuardUser         setLastLogin()                 Sets the current record's "last_login" value
+ * @method sfGuardUser         setGroups()                    Sets the current record's "groups" collection
+ * @method sfGuardUser         setPermissions()               Sets the current record's "permissions" collection
+ * @method sfGuardUser         setSfGuardUserPermission()     Sets the current record's "sfGuardUserPermission" collection
+ * @method sfGuardUser         setSfGuardUserGroup()          Sets the current record's "sfGuardUserGroup" collection
+ * @method sfGuardUser         setRememberKeys()              Sets the current record's "RememberKeys" value
+ * @method sfGuardUser         setP1ngProjectUserPermission() Sets the current record's "P1ngProjectUserPermission" collection
+ * @method sfGuardUser         setP1ngRowLevelAccess()        Sets the current record's "P1ngRowLevelAccess" collection
+ * @method sfGuardUser         setP1ngProjectRoleUser()       Sets the current record's "P1ngProjectRoleUser" collection
  * 
  * @package    p1ng
  * @subpackage model
@@ -133,6 +136,10 @@ abstract class BasesfGuardUser extends sfDoctrineRecord
         $this->hasOne('sfGuardRememberKey as RememberKeys', array(
              'local' => 'id',
              'foreign' => 'user_id'));
+
+        $this->hasMany('P1ngProjectUserPermission', array(
+             'local' => 'id',
+             'foreign' => 'sf_guard_user_id'));
 
         $this->hasMany('P1ngRowLevelAccess', array(
              'local' => 'id',

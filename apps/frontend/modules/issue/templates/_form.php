@@ -17,13 +17,6 @@
     <tbody>
       <?php echo $form->renderGlobalErrors() ?>
       <tr>
-        <th><?php echo $form['p1ng_project_id']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['p1ng_project_id']->renderError() ?>
-          <?php echo $form['p1ng_project_id'] ?>
-        </td>
-      </tr>
-      <tr>
         <th><?php echo $form['subject']->renderLabel() ?></th>
         <td>
           <?php echo $form['subject']->renderError() ?>
@@ -37,7 +30,7 @@
   </table>
 </form>
 
-<?php slot('right-sidebar'); ?>
+<?php slot('sidebar'); ?>
 <div class="section">
   <h1>Actions</h1>
   <?php if (!$form->getObject()->isNew()): ?>

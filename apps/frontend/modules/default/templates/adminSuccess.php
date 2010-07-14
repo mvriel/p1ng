@@ -1,32 +1,3 @@
-<style>
-  div.admin_group
-  {
-    float: left;
-    width: 150px;
-    border: 1px solid silver;
-    -moz-border-radius: 10px;
-    padding: 5px;
-    margin: 5px;
-  }
-
-  #content div.admin_group h1
-  {
-    text-align: center;
-    margin: 0px;
-    padding: 0px;
-    border-bottom: 1px solid silver;
-    font-size: 0.9em;
-    font-family: Arial, sans-serif;
-  }
-
-  #content div.admin_group ul
-  {
-    margin: 0px;
-    padding: 0px;
-    padding-left: 20px;
-  }
-</style>
-
 <div class="admin_group">
   <h1>User management</h1>
   <div align="center" style="padding: 10px 0px;">

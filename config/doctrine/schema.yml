@@ -31,6 +31,28 @@ P1ngProject:
   relations:
     P1ngCustomer: { foreignAlias: projects }
 
+P1ngProjectUserPermission:
+  actAs: [Timestampable]
+  columns:
+    sf_guard_user_id:       { type: integer(4), `primary: true }
+    p1ng_project_id:        { type: integer, primary: true }
+    sf_guard_permission_id: { type: integer(4), primary: true}
+  relations:
+    sfGuardUser:       ~
+    P1ngProject:       ~
+    sfGuardPermission: ~
+
+P1ngProjectGroupPermission:
+  actAs: [Timestampable]
+  columns:
+    sf_guard_group_id:      { type: integer(4), primary: true }
+    p1ng_project_id:        { type: integer, primary: true }
+    sf_guard_permission_id: { type: integer(4), primary: true}
+  relations:
+    sfGuardGroup:      ~
+    P1ngProject:       ~
+    sfGuardPermission: ~
+
 P1ngIssueStatus:
   actAs:
     Timestampable: ~
@@ -45,7 +67,7 @@ P1ngWorkflow:
   columns:
     p1ng_project_id:      { type: integer, notnull: true }
     p1ng_issue_status_id: { type: integer, notnull: true } # starting status of new issues
-    name:                 { type: string, notnull: true }
+    name:                 { type: string(100), notnull: true }
   relations:
     P1ngProject:     ~
     P1ngIssueStatus: ~

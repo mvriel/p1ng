@@ -17,11 +17,12 @@ class defaultActions extends sfActions
   */
   public function executeHome(sfWebRequest $request)
   {
+    $this->redirect('project/show?id='.$this->getUser()->getProjectId());
   }
 
   public function executeAdmin()
   {
 
   }
-  
+
 }

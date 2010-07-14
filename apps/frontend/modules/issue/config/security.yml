@@ -10,3 +10,4 @@ delete: { credentials: issue.delete }
 
 transition: { credentials: issue.update }
 search:     { credentials: issue.list   }
+report:     { credentials: issue.list   }

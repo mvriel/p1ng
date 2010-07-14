@@ -38,6 +38,13 @@ class issueActions extends sfActions
 
   public function executeNew(sfWebRequest $request)
   {
+    $workflow = Doctrine::getTable('P1ngWorkflow')->findActiveByP1ngProjectId($this->getUser()->getProjectId());
+    if (!$workflow)
+    {
+      $this->getUser()->setFlash('error', 'There is no active workflow for this project, please contact your system administrator');
+      $this->redirect('issue/index');
+    }
+
     $this->form = new P1ngIssueForm();
   }
 
@@ -81,9 +88,16 @@ class issueActions extends sfActions
     $this->setTemplate('index');
   }
 
+  public function executeReport(sfWebRequest $request)
+  {
+
+  }
+
   protected function processForm(sfWebRequest $request, sfForm $form)
   {
-    $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
+    $parameters = $request->getParameter($form->getName());
+    $parameters['p1ng_project_id'] = $this->getUser()->getProjectId();
+    $form->bind($parameters, $request->getFiles($form->getName()));
     if ($form->isValid())
     {
       $p1ng_issue = $form->save();

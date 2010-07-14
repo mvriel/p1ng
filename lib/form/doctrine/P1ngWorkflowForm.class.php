@@ -12,5 +12,9 @@ class P1ngWorkflowForm extends BaseP1ngWorkflowForm
 {
   public function configure()
   {
+    unset($this['created_at']);
+    unset($this['updated_at']);
+    $this->getWidgetSchema()->setLabel('p1ng_project_id', 'Project');
+    $this->getWidgetSchema()->setLabel('p1ng_issue_status_id', 'Select the initial status');
   }
 }

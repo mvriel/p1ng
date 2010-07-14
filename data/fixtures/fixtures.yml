@@ -113,3 +113,7 @@ sfGuardPermission:
   user_update:      { name: user.update,      description: defines who may update users }
   user_delete:      { name: user.delete,      description: defines who may delete users }
 
+sfGuardGroupPermission:
+  sggp_project_list:
+    sfGuardGroup:       sgg_user
+    sfGuardPermission:  project_list

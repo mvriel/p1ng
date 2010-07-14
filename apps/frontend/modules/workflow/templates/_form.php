@@ -10,10 +10,6 @@
       <tr>
         <td colspan="2">
           <?php echo $form->renderHiddenFields(false) ?>
-          &nbsp;<a href="<?php echo url_for('workflow/index') ?>">Back to list</a>
-          <?php if (!$form->getObject()->isNew()): ?>
-            &nbsp;<?php echo link_to('Delete', 'workflow/delete?id='.$form->getObject()->getId(), array('method' => 'delete', 'confirm' => 'Are you sure?')) ?>
-          <?php endif; ?>
           <input type="submit" value="Save" />
         </td>
       </tr>
@@ -41,34 +37,16 @@
           <?php echo $form['name'] ?>
         </td>
       </tr>
-      <tr>
-        <th><?php echo $form['expression']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['expression']->renderError() ?>
-          <?php echo $form['expression'] ?>
-        </td>
-      </tr>
-      <tr>
-        <th><?php echo $form['created_at']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['created_at']->renderError() ?>
-          <?php echo $form['created_at'] ?>
-        </td>
-      </tr>
-      <tr>
-        <th><?php echo $form['updated_at']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['updated_at']->renderError() ?>
-          <?php echo $form['updated_at'] ?>
-        </td>
-      </tr>
-      <tr>
-        <th><?php echo $form['deleted_at']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['deleted_at']->renderError() ?>
-          <?php echo $form['deleted_at'] ?>
-        </td>
-      </tr>
     </tbody>
   </table>
 </form>
+
+<?php slot('sidebar'); ?>
+<div class="section">
+  <h1>Actions</h1>
+  <a href="<?php echo url_for('workflow/index') ?>">Back to list</a><br />
+  <?php if (!$form->getObject()->isNew()): ?>
+    <?php echo link_to('Delete', 'workflow/delete?id='.$form->getObject()->getId(), array('method' => 'delete', 'confirm' => 'Are you sure?')) ?>
+  <?php endif; ?>
+</div>
+<?php end_slot(); ?>

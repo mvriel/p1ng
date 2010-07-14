@@ -50,7 +50,7 @@
   </table>
 </form>
 
-<?php slot('right-sidebar'); ?>
+<?php slot('sidebar'); ?>
 <div class="section">
   <h1>Actions</h1>
   <a href="<?php echo url_for('workflow/show?id='.$form->getObject()->getP1ngWorkflowId()) ?>">Back to workflow</a><br />
@@ -58,5 +58,5 @@
     <?php echo link_to('Delete', 'transition/delete?id='.$form->getObject()->getId(), array('method' => 'delete', 'confirm' => 'Are you sure?')) ?><br />
   <?php endif; ?>
 </div>
-<?php include_slot('right-sidebar'); ?>
+<?php include_slot('sidebar'); ?>
 <?php end_slot(); ?>

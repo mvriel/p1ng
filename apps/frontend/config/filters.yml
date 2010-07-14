@@ -7,6 +7,8 @@ rendering: ~
 remember_me:
   class: sfGuardRememberMeFilter
 security:  ~
+p1ng_project_selection:
+  class: p1ngProjectSelectionFilter
 
 cache:     ~
 execution: ~

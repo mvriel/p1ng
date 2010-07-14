@@ -12,27 +12,33 @@
  * @property Doctrine_Collection $sfGuardGroupPermission
  * @property Doctrine_Collection $Users
  * @property Doctrine_Collection $sfGuardUserPermission
+ * @property Doctrine_Collection $P1ngProjectUserPermission
+ * @property Doctrine_Collection $P1ngProjectGroupPermission
  * @property Doctrine_Collection $P1ngRowLevelAccess
  * @property Doctrine_Collection $P1ngProjectRolePermission
  * 
- * @method integer             getId()                        Returns the current record's "id" value
- * @method string              getName()                      Returns the current record's "name" value
- * @method string              getDescription()               Returns the current record's "description" value
- * @method Doctrine_Collection getGroups()                    Returns the current record's "Groups" collection
- * @method Doctrine_Collection getSfGuardGroupPermission()    Returns the current record's "sfGuardGroupPermission" collection
- * @method Doctrine_Collection getUsers()                     Returns the current record's "Users" collection
- * @method Doctrine_Collection getSfGuardUserPermission()     Returns the current record's "sfGuardUserPermission" collection
- * @method Doctrine_Collection getP1ngRowLevelAccess()        Returns the current record's "P1ngRowLevelAccess" collection
- * @method Doctrine_Collection getP1ngProjectRolePermission() Returns the current record's "P1ngProjectRolePermission" collection
- * @method sfGuardPermission   setId()                        Sets the current record's "id" value
- * @method sfGuardPermission   setName()                      Sets the current record's "name" value
- * @method sfGuardPermission   setDescription()               Sets the current record's "description" value
- * @method sfGuardPermission   setGroups()                    Sets the current record's "Groups" collection
- * @method sfGuardPermission   setSfGuardGroupPermission()    Sets the current record's "sfGuardGroupPermission" collection
- * @method sfGuardPermission   setUsers()                     Sets the current record's "Users" collection
- * @method sfGuardPermission   setSfGuardUserPermission()     Sets the current record's "sfGuardUserPermission" collection
- * @method sfGuardPermission   setP1ngRowLevelAccess()        Sets the current record's "P1ngRowLevelAccess" collection
- * @method sfGuardPermission   setP1ngProjectRolePermission() Sets the current record's "P1ngProjectRolePermission" collection
+ * @method integer             getId()                         Returns the current record's "id" value
+ * @method string              getName()                       Returns the current record's "name" value
+ * @method string              getDescription()                Returns the current record's "description" value
+ * @method Doctrine_Collection getGroups()                     Returns the current record's "Groups" collection
+ * @method Doctrine_Collection getSfGuardGroupPermission()     Returns the current record's "sfGuardGroupPermission" collection
+ * @method Doctrine_Collection getUsers()                      Returns the current record's "Users" collection
+ * @method Doctrine_Collection getSfGuardUserPermission()      Returns the current record's "sfGuardUserPermission" collection
+ * @method Doctrine_Collection getP1ngProjectUserPermission()  Returns the current record's "P1ngProjectUserPermission" collection
+ * @method Doctrine_Collection getP1ngProjectGroupPermission() Returns the current record's "P1ngProjectGroupPermission" collection
+ * @method Doctrine_Collection getP1ngRowLevelAccess()         Returns the current record's "P1ngRowLevelAccess" collection
+ * @method Doctrine_Collection getP1ngProjectRolePermission()  Returns the current record's "P1ngProjectRolePermission" collection
+ * @method sfGuardPermission   setId()                         Sets the current record's "id" value
+ * @method sfGuardPermission   setName()                       Sets the current record's "name" value
+ * @method sfGuardPermission   setDescription()                Sets the current record's "description" value
+ * @method sfGuardPermission   setGroups()                     Sets the current record's "Groups" collection
+ * @method sfGuardPermission   setSfGuardGroupPermission()     Sets the current record's "sfGuardGroupPermission" collection
+ * @method sfGuardPermission   setUsers()                      Sets the current record's "Users" collection
+ * @method sfGuardPermission   setSfGuardUserPermission()      Sets the current record's "sfGuardUserPermission" collection
+ * @method sfGuardPermission   setP1ngProjectUserPermission()  Sets the current record's "P1ngProjectUserPermission" collection
+ * @method sfGuardPermission   setP1ngProjectGroupPermission() Sets the current record's "P1ngProjectGroupPermission" collection
+ * @method sfGuardPermission   setP1ngRowLevelAccess()         Sets the current record's "P1ngRowLevelAccess" collection
+ * @method sfGuardPermission   setP1ngProjectRolePermission()  Sets the current record's "P1ngProjectRolePermission" collection
  * 
  * @package    p1ng
  * @subpackage model
@@ -81,6 +87,14 @@ abstract class BasesfGuardPermission extends sfDoctrineRecord
         $this->hasMany('sfGuardUserPermission', array(
              'local' => 'id',
              'foreign' => 'permission_id'));
+
+        $this->hasMany('P1ngProjectUserPermission', array(
+             'local' => 'id',
+             'foreign' => 'sf_guard_permission_id'));
+
+        $this->hasMany('P1ngProjectGroupPermission', array(
+             'local' => 'id',
+             'foreign' => 'sf_guard_permission_id'));
 
         $this->hasMany('P1ngRowLevelAccess', array(
              'local' => 'id',

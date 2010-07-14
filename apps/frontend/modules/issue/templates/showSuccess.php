@@ -37,7 +37,7 @@
   </div>
 </div>
 
-<?php slot('right-sidebar'); ?>
+<?php slot('sidebar'); ?>
 <div class="section">
   <h1>Details</h1>
   <table>

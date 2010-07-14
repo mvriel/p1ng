@@ -21,7 +21,7 @@
   </tbody>
 </table>
 
-<?php slot('right-sidebar'); ?>
+<?php slot('sidebar'); ?>
 <div class="section">
   <h1>Actions</h1>
   <a href="<?php echo url_for('workflow/new') ?>">Create a new workflow</a>

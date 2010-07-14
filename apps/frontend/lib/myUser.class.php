@@ -16,7 +16,6 @@ class myUser extends sfGuardSecurityUser
 
   public function addCredentials()
   {
-
     $credentials = (is_array(func_get_arg(0))) ? func_get_arg(0) : func_get_args();
     parent::addCredentials($credentials);
   }
@@ -29,27 +28,42 @@ class myUser extends sfGuardSecurityUser
    * @param array $namespace
    * @return bool
    */
-  public function hasCredential($credential, $useAnd = true, $namespace = array())
+  public function hasCredential($credential, $useAnd = true)
   {
     // check global space whether the user has the credential
     $result = parent::hasCredential($credential, $useAnd);
-    if (!$result)
-    {
-      foreach($namespace as $name => $key)
-      {
-        // allow the use of objects and convert them
-        if (is_object($key) && ($key instanceof sfDoctrineRecord))
-        {
-          $name = get_class($key);
-          $key = $key->getId();
-        }
-
-        // check namespace whether the user has the credential
-        $result = parent::hasCredential($name.'.'.$key.'.'.$credential, $useAnd);
-      }
-    }
 
     return $result;
+  }
+
+  public function getProject()
+  {
+    static $project = null;
+
+    if (!$project && $this->getProjectId())
+    {
+      $project = Doctrine::getTable('P1ngProject')->find($this->getProjectId());
+    }
+
+    return $project;
+  }
+
+  public function getProjectId()
+  {
+    return $this->getAttribute('project_id');
+  }
+
+  public function setProjectId($project_id)
+  {
+    // set the project id already as it is used with the hasCredential method
+    $this->setAttribute('project_id', $project_id);
+
+    // check if we are allowed to use this project
+    if (!$this->hasCredential('project.read'))
+    {
+      $this->setAttribute('project_id', null);
+      throw new Exception('You are not allowed to view this project');
+    }
   }
 
   /**
@@ -59,6 +73,12 @@ class myUser extends sfGuardSecurityUser
    */
   public function getAllowedProjects()
   {
+    // not logged in? Don't get to see anything
+    if (!$this->getGuardUser())
+    {
+      return array();
+    }
+
     // super admins may see and know all
     if ($this->getGuardUser()->getIsSuperAdmin())
     {
@@ -73,6 +93,12 @@ class myUser extends sfGuardSecurityUser
     }
 
     return $result;
+  }
+
+  public function signOut()
+  {
+    parent::signOut();
+    $this->setAttribute('project_id', null);
   }
 
 }

@@ -18,6 +18,7 @@ class projectActions extends sfActions
   public function executeShow(sfWebRequest $request)
   {
     $this->p1ng_project = $this->getRoute()->getObject();
+    $this->getUser()->setProjectId($this->p1ng_project->getId());
   }
 
   public function executeNew(sfWebRequest $request)

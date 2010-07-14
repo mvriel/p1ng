@@ -1,0 +1,14 @@
+#sfPortalColumn:
+#  columns:
+#
+#sfPortalPortlet:
+#  columns:
+#
+#  relations:
+#
+#
+#sfPortalPortletPosition:
+#  columns:
+#    sf_guard_user_id: { type: integer(4) }
+#  relations:
+#    sfGuardUser: ~

@@ -13,7 +13,7 @@ generator:
     config:
       filter:
         class: false
-        
+
       fields:
         password_again: { label: "Password (again)" }
 
@@ -23,6 +23,8 @@ generator:
 
       form:
         class: sfGuardUserAdminForm
+        actions:
+          _save: ~
         display:
           "NONE":                   [username, password, password_again]
           "Permissions and groups": [is_active, is_super_admin, groups_list, permissions_list]
